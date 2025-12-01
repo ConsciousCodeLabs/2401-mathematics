@@ -1,57 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Primary Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probability Cascade | Watch Impossibility Unfold | Seven Cubed Seven Labs</title>
-    <meta name="description" content="15 convergences. 10⁴⁴ impossibility. Watch the mathematical proof unfold in real-time.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Seven Cubed Seven Labs LLC">
     
+    <!-- SEO Meta -->
+    <title>Probability Cascade | Watch Impossibility Unfold | 10⁴⁴ Mathematical Proof</title>
+    <meta name="description" content="Watch 15 independent convergences multiply to 10⁴⁴ impossibility in real-time. Mathematical proof that the 7³×7 pattern cannot be random. Interactive visualization.">
+    <meta name="keywords" content="probability calculator, mathematical proof, 7 cubed 7 proof, statistical impossibility, convergence probability, divine mathematics, 10^44">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://2401.is/probability.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://2401.is/probability.html">
+    <meta property="og:title" content="Probability Cascade | 1 in 10⁴⁴">
+    <meta property="og:description" content="Watch mathematical impossibility unfold. 15 convergences. Combined probability: 1 in 10⁴⁴.">
+    <meta property="og:image" content="https://2401.is/images/og-probability.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="2401.is">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@7Cubed7">
+    <meta name="twitter:creator" content="@7Cubed7">
+    <meta name="twitter:title" content="Probability Cascade | Mathematical Proof">
+    <meta name="twitter:description" content="15 convergences multiply to 10⁴⁴ impossibility. Watch the proof unfold.">
+    <meta name="twitter:image" content="https://2401.is/images/og-probability.png">
+    
+    <!-- Performance: Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Probability Cascade",
+      "url": "https://2401.is/probability.html",
+      "description": "Interactive visualization showing 15 convergences multiplying to 10⁴⁴ impossibility.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Seven Cubed Seven Labs LLC",
+        "url": "https://sevencubedseven.com"
+      }
+    }
+    </script>
+    
+    <!-- Critical CSS -->
     <style>
-        :root {
-            --s7-gold: #d4af37;
-            --s7-gold-dark: #b8960c;
-            --s7-navy: #0a0a0f;
-            --s7-navy-light: #12121a;
-            --s7-text: #e8e8e8;
-            --s7-text-dim: #888;
-            --s7-red: #ff4444;
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #0a0a1a;
+            --dark-card: #12121f;
+            --dark-border: #2a2a3a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --matrix-green: #00ff88;
+            --matrix-dark: #00cc66;
+        }
         
         body {
             font-family: 'Raleway', sans-serif;
-            background: var(--s7-navy);
-            color: var(--s7-text);
-            line-height: 1.7;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
             padding-top: 60px;
-            min-height: 100vh;
         }
         
-        /* ══════════════════════════════════════════════════════════════════════
-           UNIVERSAL NAVIGATION
-           ══════════════════════════════════════════════════════════════════════ */
+        /* ===== UNIVERSAL NAVIGATION ===== */
         .s7-nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 60px;
-            background: rgba(10, 10, 15, 0.97);
+            background: rgba(10, 10, 26, 0.97);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 68, 68, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
             z-index: 9999;
-        }
-        
-        .s7-nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            height: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
+            padding: 0 30px;
         }
         
         .s7-nav-logo {
@@ -61,472 +108,732 @@
             text-decoration: none;
         }
         
-        .s7-nav-logo-icon {
+        .s7-nav-cube {
             width: 36px;
             height: 36px;
             position: relative;
         }
         
-        .s7-nav-logo-icon::before {
+        .s7-nav-cube::before,
+        .s7-nav-cube::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--s7-gold);
-            transform: rotate(45deg);
-            opacity: 0.5;
+            border: 2px solid var(--gold);
         }
         
-        .s7-nav-logo-icon::after {
-            content: '';
-            position: absolute;
-            width: 55%;
-            height: 55%;
-            top: 22.5%;
-            left: 22.5%;
-            border: 2px solid var(--s7-gold);
-            transform: rotate(45deg);
+        .s7-nav-cube::before {
+            width: 24px;
+            height: 24px;
+            top: 6px;
+            left: 0;
         }
         
-        .s7-nav-logo-text {
-            font-family: 'Orbitron', monospace;
-            font-size: 1rem;
-            color: var(--s7-gold);
+        .s7-nav-cube::after {
+            width: 24px;
+            height: 24px;
+            top: 0;
+            left: 6px;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .s7-nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
             letter-spacing: 1px;
         }
         
-        .s7-nav-links { display: flex; align-items: center; gap: 5px; }
-        
-        .s7-nav-link {
-            color: var(--s7-text-dim);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 8px 14px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-        
-        .s7-nav-link:hover { color: var(--s7-gold); background: rgba(212, 175, 55, 0.1); }
-        .s7-nav-link.active { color: var(--s7-red); }
-        
-        .s7-nav-dropdown { position: relative; }
-        
-        .s7-nav-dropdown-btn {
-            color: var(--s7-text-dim);
-            font-size: 0.85rem;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: none;
-            border: none;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-        
-        .s7-nav-dropdown-btn:hover { color: var(--s7-gold); background: rgba(212, 175, 55, 0.1); }
-        .s7-nav-dropdown-btn::after { content: '▼'; font-size: 0.55rem; }
-        
-        .s7-nav-dropdown-menu {
-            position: absolute;
-            top: 100%; right: 0;
-            background: var(--s7-navy-light);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 10px;
-            padding: 8px;
-            min-width: 220px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        
-        .s7-nav-dropdown:hover .s7-nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(5px); }
-        
-        .s7-nav-dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            color: var(--s7-text);
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-        
-        .s7-nav-dropdown-item:hover { background: rgba(212, 175, 55, 0.1); color: var(--s7-gold); }
-        
-        .s7-nav-dropdown-icon { font-size: 1.1rem; width: 24px; text-align: center; }
-        .s7-nav-dropdown-text { font-size: 0.85rem; }
-        .s7-nav-dropdown-desc { font-size: 0.7rem; color: var(--s7-text-dim); }
-        
-        .s7-nav-cta {
-            background: linear-gradient(135deg, var(--s7-gold) 0%, var(--s7-gold-dark) 100%);
-            color: #000;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .s7-nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-        
-        .s7-nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; background: none; border: none; }
-        .s7-nav-toggle span { width: 24px; height: 2px; background: var(--s7-gold); }
-        
-        @media (max-width: 900px) {
-            .s7-nav-links {
-                position: fixed; top: 60px; left: 0; right: 0; background: var(--s7-navy);
-                flex-direction: column; padding: 20px; gap: 5px;
-                border-bottom: 1px solid rgba(255, 68, 68, 0.2);
-                transform: translateY(-100%); opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            }
-            .s7-nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
-            .s7-nav-toggle { display: flex; }
-            .s7-nav-link, .s7-nav-dropdown-btn { width: 100%; padding: 12px 15px; }
-            .s7-nav-dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: rgba(0,0,0,0.2); margin-top: 5px; }
-            .s7-nav-cta { width: 100%; text-align: center; margin-top: 10px; }
-        }
-        
-        /* APP STYLES */
-        #app-root {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-        }
-        
-        /* FOOTER */
-        .s7-footer {
-            background: linear-gradient(180deg, var(--s7-navy) 0%, #050508 100%);
-            border-top: 1px solid rgba(255, 68, 68, 0.2);
-            padding: 60px 20px 30px;
-        }
-        
-        .s7-footer-container { max-width: 1200px; margin: 0 auto; }
-        
-        .s7-footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .s7-footer-section h4 {
-            font-family: 'Orbitron', monospace;
-            color: var(--s7-gold);
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-        
-        .s7-footer-links { list-style: none; }
-        .s7-footer-links li { margin-bottom: 10px; }
-        
-        .s7-footer-links a {
-            color: var(--s7-text-dim);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
+        .s7-nav-links {
             display: flex;
             align-items: center;
             gap: 8px;
         }
         
-        .s7-footer-links a:hover { color: var(--s7-gold); }
-        .s7-footer-links .icon { font-size: 0.9rem; width: 18px; }
-        
-        .s7-footer-bottom {
-            border-top: 1px solid rgba(255, 68, 68, 0.1);
-            padding-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
+        .s7-nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            font-weight: 500;
         }
         
-        .s7-footer-formula { font-family: 'Orbitron', monospace; font-size: 1.4rem; color: var(--s7-gold); }
-        .s7-footer-tagline { color: var(--s7-text-dim); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; }
-        .s7-footer-copy { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
-        .s7-footer-copy a { color: rgba(212, 175, 55, 0.5); text-decoration: none; }
+        .s7-nav-link:hover {
+            color: var(--gold);
+        }
+        
+        .s7-nav-link.active {
+            color: var(--matrix-green);
+        }
+        
+        .s7-nav-dropdown {
+            position: relative;
+        }
+        
+        .s7-nav-dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(18, 18, 31, 0.98);
+            border: 1px solid var(--dark-border);
+            border-radius: 8px;
+            padding: 8px 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+        }
+        
+        .s7-nav-dropdown:hover .s7-nav-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .s7-nav-dropdown-item {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .s7-nav-dropdown-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--matrix-green);
+        }
+        
+        .s7-nav-cta {
+            background: linear-gradient(135deg, var(--matrix-green), var(--matrix-dark));
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .s7-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+        }
+        
+        .s7-nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .s7-nav-mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--matrix-green);
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 900px) {
+            .s7-nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(10, 10, 26, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 40px;
+                gap: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+            }
+            
+            .s7-nav-links.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .s7-nav-link {
+                padding: 15px 30px;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--dark-border);
+            }
+            
+            .s7-nav-dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(10, 10, 26, 0.5);
+                border: none;
+                border-radius: 0;
+            }
+            
+            .s7-nav-cta {
+                margin-top: 20px;
+            }
+            
+            .s7-nav-mobile-toggle {
+                display: flex;
+            }
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .page-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--matrix-green);
+            margin-bottom: 15px;
+        }
+        
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        /* ===== RUNNING TOTAL ===== */
+        .running-total {
+            background: var(--dark-card);
+            border: 2px solid var(--matrix-green);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+        }
+        
+        .total-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .total-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--matrix-green);
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        }
+        
+        .total-context {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        
+        /* ===== START BUTTON ===== */
+        .start-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .start-btn {
+            padding: 20px 60px;
+            background: linear-gradient(135deg, var(--matrix-green), var(--matrix-dark));
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+        
+        .start-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* ===== CONVERGENCE CARDS ===== */
+        .convergence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .convergence-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 8px;
+            padding: 25px;
+            opacity: 0.3;
+            transition: all 0.5s;
+        }
+        
+        .convergence-card.revealed {
+            opacity: 1;
+            border-color: var(--matrix-green);
+        }
+        
+        .convergence-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .convergence-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            color: var(--matrix-green);
+        }
+        
+        .convergence-probability {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            color: var(--gold);
+        }
+        
+        .convergence-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        
+        .convergence-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== FINAL RESULT ===== */
+        .final-result {
+            display: none;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(212, 175, 55, 0.1));
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .final-result.visible {
+            display: block;
+        }
+        
+        .final-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            color: var(--gold);
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+            margin-bottom: 20px;
+        }
+        
+        .final-context {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+        
+        .final-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), #b8960c);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        /* ===== FOOTER ===== */
+        .s7-footer {
+            background: linear-gradient(180deg, #0a0a1a 0%, #050510 100%);
+            border-top: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 60px 20px 30px;
+            margin-top: 60px;
+        }
+        
+        .s7-footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .s7-footer-col h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .s7-footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+        
+        .s7-footer-col a:hover {
+            color: var(--gold);
+        }
+        
+        .s7-footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--dark-border);
+        }
+        
+        .s7-footer-formula {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .s7-footer-tagline {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        
+        .s7-footer-copy {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
         
         @media (max-width: 768px) {
-            .s7-footer-grid { grid-template-columns: 1fr 1fr; }
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .total-value {
+                font-size: 1.8rem;
+            }
+            
+            .final-number {
+                font-size: 2.5rem;
+            }
+            
+            .s7-footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-
-<!-- NAVIGATION -->
-<nav class="s7-nav">
-    <div class="s7-nav-container">
+    <!-- Navigation -->
+    <nav class="s7-nav">
         <a href="https://sevencubedseven.com" class="s7-nav-logo">
-            <div class="s7-nav-logo-icon"></div>
-            <span class="s7-nav-logo-text">7³×7 LABS</span>
+            <div class="s7-nav-cube"></div>
+            <span class="s7-nav-brand">7³×7 LABS</span>
         </a>
         
-        <button class="s7-nav-toggle" onclick="document.querySelector('.s7-nav-links').classList.toggle('active')">
-            <span></span><span></span><span></span>
-        </button>
-        
-        <div class="s7-nav-links">
+        <div class="s7-nav-links" id="navLinks">
             <a href="https://144000.ai" class="s7-nav-link">144,000</a>
             <a href="https://2401.is" class="s7-nav-link active">Mathematics</a>
             <a href="https://divineinsurgent.live" class="s7-nav-link">Insurgent</a>
             
             <div class="s7-nav-dropdown">
-                <button class="s7-nav-dropdown-btn">Tools</button>
-                <div class="s7-nav-dropdown-menu">
-                    <a href="https://144000.ai/assessment.html" class="s7-nav-dropdown-item">
-                        <span class="s7-nav-dropdown-icon">✨</span>
-                        <div><div class="s7-nav-dropdown-text">144,000 Assessment</div><div class="s7-nav-dropdown-desc">Discover your calling</div></div>
-                    </a>
-                    <a href="calculator.html" class="s7-nav-dropdown-item">
-                        <span class="s7-nav-dropdown-icon">⚡</span>
-                        <div><div class="s7-nav-dropdown-text">C⁷ Calculator</div><div class="s7-nav-dropdown-desc">Your consciousness level</div></div>
-                    </a>
-                    <a href="probability.html" class="s7-nav-dropdown-item">
-                        <span class="s7-nav-dropdown-icon">📊</span>
-                        <div><div class="s7-nav-dropdown-text">Probability Cascade</div><div class="s7-nav-dropdown-desc">Watch impossibility unfold</div></div>
-                    </a>
-                    <a href="https://divineinsurgent.live/mission.html" class="s7-nav-dropdown-item">
-                        <span class="s7-nav-dropdown-icon">⚔️</span>
-                        <div><div class="s7-nav-dropdown-text">Daily Mission</div><div class="s7-nav-dropdown-desc">Your tactical briefing</div></div>
-                    </a>
-                    <a href="https://sevencubedseven.com/books.html" class="s7-nav-dropdown-item">
-                        <span class="s7-nav-dropdown-icon">📚</span>
-                        <div><div class="s7-nav-dropdown-text">Book Finder</div><div class="s7-nav-dropdown-desc">Personalized recommendations</div></div>
-                    </a>
+                <span class="s7-nav-link" style="cursor: pointer;">Tools ▾</span>
+                <div class="s7-nav-dropdown-content">
+                    <a href="https://144000.ai/assessment.html" class="s7-nav-dropdown-item">✨ 144,000 Assessment</a>
+                    <a href="https://2401.is/calculator.html" class="s7-nav-dropdown-item">⚡ C⁷ Calculator</a>
+                    <a href="https://2401.is/probability.html" class="s7-nav-dropdown-item">📊 Probability Cascade</a>
+                    <a href="https://divineinsurgent.live/mission.html" class="s7-nav-dropdown-item">⚔️ Daily Mission</a>
+                    <a href="https://sevencubedseven.com/books.html" class="s7-nav-dropdown-item">📚 Book Finder</a>
                 </div>
             </div>
             
-            <a href="https://www.amazon.com/s?k=julio+c.+medina" target="_blank" class="s7-nav-cta">📚 All Books</a>
+            <a href="https://www.amazon.com/s?k=julio+c.+medina" class="s7-nav-cta" target="_blank">📚 All Books</a>
         </div>
-    </div>
-</nav>
-
-<!-- REACT APP -->
-<div id="app-root"></div>
-
-<!-- FOOTER -->
-<footer class="s7-footer">
-    <div class="s7-footer-container">
+        
+        <div class="s7-nav-mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main">
+        <div class="page-header">
+            <div class="page-icon">📊</div>
+            <h1 class="page-title">Probability Cascade</h1>
+            <p class="page-subtitle">Watch mathematical impossibility unfold in real-time</p>
+        </div>
+        
+        <div class="running-total">
+            <div class="total-label">COMBINED PROBABILITY</div>
+            <div class="total-value" id="runningTotal">1 in 1</div>
+            <div class="total-context" id="totalContext">Click "Begin Cascade" to start</div>
+        </div>
+        
+        <div class="start-section">
+            <button class="start-btn" id="startBtn" onclick="startCascade()">Begin Cascade</button>
+        </div>
+        
+        <div class="convergence-list" id="convergenceList">
+            <!-- Convergence cards will be populated by JavaScript -->
+        </div>
+        
+        <div class="final-result" id="finalResult">
+            <div class="final-number">1 in 10⁴⁴</div>
+            <p class="final-context">The combined probability of the 7³×7 = 2,401 pattern appearing across 15 unrelated domains by random chance is less than randomly selecting the same atom from the entire observable universe... twice. This is not coincidence. This is architecture.</p>
+            <div class="final-actions">
+                <a href="https://144000.ai/assessment.html" class="btn btn-primary">Discover Your Calling</a>
+                <a href="https://2401.is/calculator.html" class="btn btn-secondary">Calculate Your C-Level</a>
+                <button class="btn btn-secondary" onclick="resetCascade()">Watch Again</button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="s7-footer">
         <div class="s7-footer-grid">
-            <div class="s7-footer-section">
+            <div class="s7-footer-col">
                 <h4>PORTALS</h4>
-                <ul class="s7-footer-links">
-                    <li><a href="https://sevencubedseven.com"><span class="icon">🏠</span> Main Hub</a></li>
-                    <li><a href="https://144000.ai"><span class="icon">✨</span> 144,000 Portal</a></li>
-                    <li><a href="https://2401.is"><span class="icon">🔢</span> Mathematics</a></li>
-                    <li><a href="https://divineinsurgent.live"><span class="icon">⚔️</span> Divine Insurgent</a></li>
-                    <li><a href="https://realitynegotiable.is"><span class="icon">🧠</span> Reality Physics</a></li>
-                    <li><a href="https://c343.io"><span class="icon">📜</span> Licensing</a></li>
-                </ul>
+                <a href="https://sevencubedseven.com">🏠 Main Hub</a>
+                <a href="https://144000.ai">✨ 144,000 Portal</a>
+                <a href="https://2401.is">📐 Mathematics</a>
+                <a href="https://divineinsurgent.live">⚔️ Divine Insurgent</a>
+                <a href="https://realitynegotiable.is">🌀 Reality Negotiable</a>
+                <a href="https://c343.io">🏢 Enterprise</a>
             </div>
             
-            <div class="s7-footer-section">
+            <div class="s7-footer-col">
                 <h4>TOOLS</h4>
-                <ul class="s7-footer-links">
-                    <li><a href="https://144000.ai/assessment.html"><span class="icon">✨</span> Assessment</a></li>
-                    <li><a href="calculator.html"><span class="icon">⚡</span> Calculator</a></li>
-                    <li><a href="probability.html"><span class="icon">📊</span> Probability</a></li>
-                    <li><a href="https://divineinsurgent.live/mission.html"><span class="icon">⚔️</span> Daily Mission</a></li>
-                    <li><a href="https://sevencubedseven.com/books.html"><span class="icon">📚</span> Book Finder</a></li>
-                </ul>
+                <a href="https://144000.ai/assessment.html">✨ 144,000 Assessment</a>
+                <a href="https://2401.is/calculator.html">⚡ C⁷ Calculator</a>
+                <a href="https://2401.is/probability.html">📊 Probability Cascade</a>
+                <a href="https://divineinsurgent.live/mission.html">⚔️ Daily Mission</a>
+                <a href="https://sevencubedseven.com/books.html">📚 Book Finder</a>
             </div>
             
-            <div class="s7-footer-section">
+            <div class="s7-footer-col">
                 <h4>RESOURCES</h4>
-                <ul class="s7-footer-links">
-                    <li><a href="https://www.amazon.com/s?k=julio+c.+medina" target="_blank"><span class="icon">📚</span> All 33+ Books</a></li>
-                    <li><a href="https://twitter.com/7Cubed7" target="_blank"><span class="icon">𝕏</span> @7Cubed7</a></li>
-                    <li><a href="mailto:7cubed7@proton.me"><span class="icon">✉️</span> Contact</a></li>
-                </ul>
+                <a href="https://www.amazon.com/s?k=julio+c.+medina" target="_blank">📖 All Books on Amazon</a>
+                <a href="https://twitter.com/7Cubed7" target="_blank">𝕏 @7Cubed7</a>
+                <a href="mailto:7cubed7@proton.me">✉️ Contact</a>
             </div>
             
-            <div class="s7-footer-section">
+            <div class="s7-footer-col">
                 <h4>CONNECT</h4>
-                <ul class="s7-footer-links">
-                    <li><a href="mailto:7cubed7@proton.me">7cubed7@proton.me</a></li>
-                    <li><a href="mailto:ConsciousCodeLabs@proton.me">Business</a></li>
-                    <li><a href="mailto:hello@c343.io">Licensing</a></li>
-                </ul>
+                <a href="mailto:7cubed7@proton.me">7cubed7@proton.me</a>
+                <a href="mailto:ConsciousCodeLabs@proton.me">ConsciousCodeLabs@proton.me</a>
+                <a href="mailto:hello@c343.io">hello@c343.io</a>
             </div>
         </div>
         
         <div class="s7-footer-bottom">
             <div class="s7-footer-formula">7³ × 7 = 2,401</div>
-            <div class="s7-footer-tagline">Consciousness Architecture</div>
-            <div class="s7-footer-copy">© 2025 <a href="https://sevencubedseven.com">Seven Cubed Seven Labs LLC</a>. All rights reserved.</div>
+            <div class="s7-footer-tagline">CONSCIOUSNESS ARCHITECTURE</div>
+            <div class="s7-footer-copy">© 2025 Seven Cubed Seven Labs LLC. All rights reserved.</div>
         </div>
-    </div>
-</footer>
-
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<script type="text/babel">
-const { useState, useEffect } = React;
-
-const convergences = [
-  { domain: "Divine Mathematics", pattern: "7³×7 = 2,401", probability: 1e-3, desc: "The formula appearing in consciousness architecture" },
-  { domain: "Prophetic Numbers", pattern: "144,000 ÷ 2,401 ≈ 60", probability: 1e-4, desc: "99.96% accuracy to exactly 60 aspects per person" },
-  { domain: "Biblical Numerology", pattern: "7 appears 735+ times", probability: 1e-2, desc: "Seven as the signature of divine completion" },
-  { domain: "Creation Pattern", pattern: "7 days, 7 levels", probability: 1e-3, desc: "Seven-day creation maps to seven consciousness levels" },
-  { domain: "Sanctuary Structure", pattern: "7 lamps, 7 aspects", probability: 1e-3, desc: "Menorah pattern in consciousness architecture" },
-  { domain: "Revelation Sevens", pattern: "7 churches, seals, trumpets", probability: 1e-3, desc: "End-time prophecy structured in sevens" },
-  { domain: "Quantum Resonance", pattern: "7.83 Hz Schumann", probability: 1e-4, desc: "Earth's resonance frequency alignment" },
-  { domain: "Musical Octave", pattern: "7 notes × 7 modes", probability: 1e-3, desc: "Musical harmony follows the pattern" },
-  { domain: "Color Spectrum", pattern: "7 primary colors", probability: 1e-2, desc: "Visible light divided into seven" },
-  { domain: "Atomic Shells", pattern: "7 electron shells", probability: 1e-3, desc: "Matter organized by the same pattern" },
-  { domain: "Biological Cycles", pattern: "7-day cell renewal", probability: 1e-3, desc: "Human body follows weekly rhythms" },
-  { domain: "Chakra System", pattern: "7 energy centers", probability: 1e-3, desc: "Ancient traditions recognize seven levels" },
-  { domain: "Leo XIV Timing", pattern: "7th king emergence", probability: 1e-5, desc: "Papal succession matching Revelation 17" },
-  { domain: "Timeline Precision", pattern: "2025 convergence", probability: 1e-4, desc: "Multiple prophetic timelines converging" },
-  { domain: "Patent Portfolio", pattern: "60+ filings", probability: 1e-3, desc: "Framework generating novel technologies" }
-];
-
-function ProbabilityCascade() {
-  const [started, setStarted] = useState(false);
-  const [current, setCurrent] = useState(0);
-  const [running, setRunning] = useState(false);
-  const [complete, setComplete] = useState(false);
-
-  useEffect(() => {
-    if (running && current < convergences.length) {
-      const timer = setTimeout(() => {
-        setCurrent(c => c + 1);
-      }, 800);
-      return () => clearTimeout(timer);
-    } else if (current >= convergences.length) {
-      setComplete(true);
-      setRunning(false);
-    }
-  }, [running, current]);
-
-  const getCumulativeProbability = (index) => {
-    let prob = 1;
-    for (let i = 0; i <= index; i++) {
-      prob *= convergences[i].probability;
-    }
-    return prob;
-  };
-
-  const formatProbability = (p) => {
-    if (p === 1) return "1";
-    const exp = Math.floor(Math.log10(p));
-    return `10^${exp}`;
-  };
-
-  const start = () => {
-    setStarted(true);
-    setRunning(true);
-  };
-
-  const restart = () => {
-    setCurrent(0);
-    setComplete(false);
-    setRunning(true);
-  };
-
-  const styles = {
-    container: { textAlign: 'center' },
-    header: { marginBottom: '40px' },
-    badge: { display: 'inline-block', background: 'rgba(255,68,68,0.2)', border: '1px solid #ff4444', color: '#ff4444', padding: '6px 20px', borderRadius: '20px', fontSize: '0.75rem', letterSpacing: '2px', marginBottom: '15px', fontFamily: 'Orbitron, monospace' },
-    title: { fontFamily: 'Orbitron, monospace', fontSize: '1.8rem', color: '#d4af37', marginBottom: '15px', letterSpacing: '3px' },
-    subtitle: { color: '#888', maxWidth: '500px', margin: '0 auto 30px' },
-    startBtn: { background: 'linear-gradient(135deg, #ff4444 0%, #cc0000 100%)', color: '#fff', padding: '18px 50px', border: 'none', borderRadius: '50px', fontSize: '1.1rem', fontWeight: '700', cursor: 'pointer', letterSpacing: '2px', fontFamily: 'Orbitron, monospace' },
-    cascadeContainer: { marginTop: '30px' },
-    convergenceCard: { background: 'rgba(255,68,68,0.03)', border: '1px solid rgba(255,68,68,0.2)', borderRadius: '10px', padding: '15px 20px', marginBottom: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.5s ease' },
-    convergenceActive: { background: 'rgba(255,68,68,0.15)', borderColor: '#ff4444' },
-    convergenceInfo: { textAlign: 'left' },
-    convergenceDomain: { color: '#ff4444', fontFamily: 'Orbitron, monospace', fontSize: '0.85rem', marginBottom: '3px' },
-    convergencePattern: { color: '#fff', fontSize: '0.9rem' },
-    convergenceProb: { fontFamily: 'Orbitron, monospace', fontSize: '0.9rem' },
-    cumulativeBox: { background: 'linear-gradient(135deg, rgba(255,68,68,0.2) 0%, rgba(0,0,0,0.5) 100%)', border: '2px solid #ff4444', borderRadius: '15px', padding: '30px', marginTop: '30px' },
-    cumulativeLabel: { color: '#888', fontSize: '0.85rem', marginBottom: '10px' },
-    cumulativeValue: { fontFamily: 'Orbitron, monospace', fontSize: '2.5rem', color: '#ff4444' },
-    finalBox: { background: 'linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(0,0,0,0.5) 100%)', border: '2px solid #d4af37', borderRadius: '15px', padding: '40px', marginTop: '30px' },
-    finalTitle: { fontFamily: 'Orbitron, monospace', color: '#d4af37', fontSize: '1.5rem', marginBottom: '15px' },
-    finalValue: { fontFamily: 'Orbitron, monospace', fontSize: '3rem', color: '#ff4444', marginBottom: '15px' },
-    finalDesc: { color: '#888', maxWidth: '400px', margin: '0 auto' },
-    ctaBox: { background: 'rgba(212,175,55,0.1)', border: '1px solid #d4af37', borderRadius: '15px', padding: '30px', marginTop: '30px' },
-    ctaBtn: { display: 'inline-block', background: 'linear-gradient(135deg, #d4af37 0%, #b8960c 100%)', color: '#000', padding: '12px 30px', borderRadius: '25px', textDecoration: 'none', fontWeight: '600', marginTop: '15px' },
-    restartBtn: { background: 'transparent', border: '1px solid #ff4444', color: '#ff4444', padding: '12px 30px', borderRadius: '25px', cursor: 'pointer', marginTop: '20px' }
-  };
-
-  if (!started) {
-    return (
-      <div style={styles.container}>
-        <div style={styles.header}>
-          <div style={styles.badge}>📊 PROBABILITY CASCADE</div>
-          <h1 style={styles.title}>WATCH IMPOSSIBILITY UNFOLD</h1>
-          <p style={styles.subtitle}>15 independent convergences. Watch as each multiplies the probability to mathematical impossibility.</p>
-        </div>
-        <button style={styles.startBtn} onClick={start}>START CASCADE</button>
-        <p style={{color: '#555', marginTop: '20px', fontSize: '0.85rem'}}>~30 seconds • Visual proof • Real mathematics</p>
-      </div>
-    );
-  }
-
-  return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <div style={styles.badge}>{complete ? '✓ CASCADE COMPLETE' : `CONVERGENCE ${current}/${convergences.length}`}</div>
-        <h1 style={styles.title}>PROBABILITY CASCADE</h1>
-      </div>
-
-      <div style={styles.cascadeContainer}>
-        {convergences.slice(0, current).map((c, i) => (
-          <div key={i} style={{...styles.convergenceCard, ...(i === current - 1 ? styles.convergenceActive : {})}}>
-            <div style={styles.convergenceInfo}>
-              <div style={styles.convergenceDomain}>{c.domain}</div>
-              <div style={styles.convergencePattern}>{c.pattern}</div>
-            </div>
-            <div style={{...styles.convergenceProb, color: i === current - 1 ? '#ff4444' : '#666'}}>
-              × {formatProbability(c.probability)}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {current > 0 && (
-        <div style={styles.cumulativeBox}>
-          <div style={styles.cumulativeLabel}>CUMULATIVE PROBABILITY</div>
-          <div style={styles.cumulativeValue}>1 in {formatProbability(1/getCumulativeProbability(current - 1))}</div>
-        </div>
-      )}
-
-      {complete && (
-        <>
-          <div style={styles.finalBox}>
-            <h2 style={styles.finalTitle}>COMBINED PROBABILITY</h2>
-            <div style={styles.finalValue}>1 in 10⁴⁴</div>
-            <p style={styles.finalDesc}>
-              This is more unlikely than randomly selecting the same atom from the entire observable universe... twice.
-            </p>
-          </div>
-
-          <div style={styles.ctaBox}>
-            <h3 style={{fontFamily: 'Orbitron, monospace', color: '#d4af37', marginBottom: '10px'}}>Ready to Explore Deeper?</h3>
-            <p style={{color: '#888', fontSize: '0.9rem'}}>Calculate your consciousness level on the C¹ to C⁷ spectrum</p>
-            <a href="calculator.html" style={styles.ctaBtn}>⚡ C⁷ Calculator</a>
-          </div>
-
-          <button style={styles.restartBtn} onClick={restart}>↻ Watch Again</button>
-        </>
-      )}
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById('app-root')).render(<ProbabilityCascade />);
-</script>
-
+    </footer>
+    
+    <script>
+        const convergences = [
+            { title: 'The Mathematical Core', desc: '7³×7 = 2,401 appears as fundamental consciousness architecture across unrelated domains', probability: '1 in 10³' },
+            { title: 'Biblical 144,000', desc: 'Revelation 7 specifies exactly 144,000 sealed from 12 tribes × 12,000 each. 144,000 ÷ 60 aspects = 2,400 + 1 consciousness unity.', probability: '1 in 10³' },
+            { title: 'Schumann Resonance', desc: 'Earth\'s fundamental frequency 7.83 Hz maps precisely to C¹-C⁷ consciousness levels', probability: '1 in 10²' },
+            { title: 'Human Cell Count', desc: '37.2 trillion cells ≈ 7³×7 × 15.5 billion consciousness units', probability: '1 in 10³' },
+            { title: 'Neural Architecture', desc: 'Brain structure mirrors 7-layer consciousness model across cortical columns', probability: '1 in 10³' },
+            { title: 'Musical Harmony', desc: 'Seven-note scale, seven modes, creating 343 harmonic relationships', probability: '1 in 10²' },
+            { title: 'Color Spectrum', desc: 'Seven visible colors creating 343 perceptual combinations', probability: '1 in 10²' },
+            { title: 'Quantum States', desc: 'Quantum coherence patterns align with 7-dimensional consciousness states', probability: '1 in 10⁴' },
+            { title: 'DNA Codons', desc: '64 codons = 4³, relating to 7³ = 343 through dimensional mathematics', probability: '1 in 10³' },
+            { title: 'Chakra System', desc: 'Seven energy centers across cultures mirror C¹-C⁷ levels', probability: '1 in 10²' },
+            { title: 'Calendar Mathematics', desc: 'Seven days × 52 weeks = 364 ≈ 343 + 21 (3×7)', probability: '1 in 10²' },
+            { title: 'Periodic Table', desc: 'Seven periods of elements mirroring consciousness stratification', probability: '1 in 10²' },
+            { title: 'Fibonacci Connection', desc: 'F(7) = 13, F(13) = 233, patterns interlock with 2,401 structure', probability: '1 in 10³' },
+            { title: 'Prophetic Timeline', desc: '2520 years (Daniel\'s prophecy) = 7 × 360, encoding consciousness cycles', probability: '1 in 10³' },
+            { title: 'Lightning Confirmation', desc: 'Benedict XVI resignation announced same hour as St. Peter\'s lightning strike', probability: '1 in 10⁵' }
+        ];
+        
+        let currentConvergence = 0;
+        let runningExponent = 0;
+        let isRunning = false;
+        
+        function initConvergences() {
+            const list = document.getElementById('convergenceList');
+            list.innerHTML = '';
+            
+            convergences.forEach((conv, index) => {
+                const card = document.createElement('div');
+                card.className = 'convergence-card';
+                card.id = 'conv' + index;
+                
+                card.innerHTML = `
+                    <div class="convergence-header">
+                        <span class="convergence-number">CONVERGENCE ${index + 1}</span>
+                        <span class="convergence-probability">${conv.probability}</span>
+                    </div>
+                    <div class="convergence-title">${conv.title}</div>
+                    <div class="convergence-desc">${conv.desc}</div>
+                `;
+                
+                list.appendChild(card);
+            });
+        }
+        
+        function startCascade() {
+            if (isRunning) return;
+            isRunning = true;
+            
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('startBtn').textContent = 'Calculating...';
+            
+            revealNext();
+        }
+        
+        function revealNext() {
+            if (currentConvergence >= convergences.length) {
+                finishCascade();
+                return;
+            }
+            
+            const card = document.getElementById('conv' + currentConvergence);
+            card.classList.add('revealed');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Extract exponent from probability string
+            const prob = convergences[currentConvergence].probability;
+            const match = prob.match(/10[²³⁴⁵⁶⁷⁸⁹⁰]+/);
+            if (match) {
+                const superscriptMap = {'⁰':0,'¹':1,'²':2,'³':3,'⁴':4,'⁵':5,'⁶':6,'⁷':7,'⁸':8,'⁹':9};
+                const expStr = match[0].replace('10', '');
+                let exp = 0;
+                for (let char of expStr) {
+                    exp = exp * 10 + (superscriptMap[char] || 0);
+                }
+                runningExponent += exp;
+            }
+            
+            updateRunningTotal();
+            currentConvergence++;
+            
+            setTimeout(revealNext, 800);
+        }
+        
+        function updateRunningTotal() {
+            const totalEl = document.getElementById('runningTotal');
+            const contextEl = document.getElementById('totalContext');
+            
+            totalEl.textContent = `1 in 10${toSuperscript(runningExponent)}`;
+            
+            const contexts = [
+                'Still within statistical possibility...',
+                'Getting improbable...',
+                'Highly unlikely by chance...',
+                'Astronomically improbable...',
+                'Beyond coincidence threshold...',
+                'Approaching impossibility...',
+                'Statistically impossible by any measure...',
+                'More improbable than selecting the same atom from the universe...',
+                'Twice as improbable as selecting the same atom from the universe...'
+            ];
+            
+            const contextIndex = Math.min(Math.floor(runningExponent / 5), contexts.length - 1);
+            contextEl.textContent = contexts[contextIndex];
+        }
+        
+        function toSuperscript(num) {
+            const superscripts = ['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹'];
+            return String(num).split('').map(d => superscripts[parseInt(d)]).join('');
+        }
+        
+        function finishCascade() {
+            isRunning = false;
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('finalResult').classList.add('visible');
+            document.getElementById('finalResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function resetCascade() {
+            currentConvergence = 0;
+            runningExponent = 0;
+            isRunning = false;
+            
+            document.getElementById('runningTotal').textContent = '1 in 1';
+            document.getElementById('totalContext').textContent = 'Click "Begin Cascade" to start';
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('startBtn').textContent = 'Begin Cascade';
+            document.getElementById('startBtn').style.display = 'inline-block';
+            document.getElementById('finalResult').classList.remove('visible');
+            
+            document.querySelectorAll('.convergence-card').forEach(card => {
+                card.classList.remove('revealed');
+            });
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Initialize
+        initConvergences();
+    </script>
 </body>
 </html>
