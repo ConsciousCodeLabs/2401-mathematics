@@ -16,19 +16,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
             --gold: #d4af37;
             --gold-light: #f4d35e;
             --matrix: #00ff88;
             --matrix-dark: #00cc6a;
+            --red: #ff4444;
             --cosmic: #030308;
-            --cosmic-light: #0a0a15;
         }
         
         body {
@@ -42,13 +38,10 @@
         .font-orbitron { font-family: 'Orbitron', monospace; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
-        /* Grid Background */
         .grid-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background-image: 
                 linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
@@ -57,119 +50,59 @@
             z-index: 0;
         }
         
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.3); }
-            50% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.6); }
-        }
-        
-        @keyframes pulse-green {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
-        }
+        @keyframes pulse-gold { 0%, 100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.3); } 50% { box-shadow: 0 0 60px rgba(212, 175, 55, 0.6); } }
+        @keyframes pulse-green { 0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); } 50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); } }
+        @keyframes pulse-red { 0%, 100% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.3); } 50% { box-shadow: 0 0 40px rgba(255, 68, 68, 0.6); } }
+        @keyframes shimmer { 0% { transform: translateX(0); } 100% { transform: translateX(50%); } }
         
         .pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
         .pulse-green { animation: pulse-green 2s ease-in-out infinite; }
+        .pulse-red { animation: pulse-red 2s ease-in-out infinite; }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
         
         /* Hero */
-        .hero {
-            text-align: center;
-            padding: 60px 20px 40px;
-        }
+        .hero { text-align: center; padding: 60px 20px 40px; }
+        .hero-formula { font-size: 3.5rem; color: var(--gold); text-shadow: 0 0 30px rgba(212, 175, 55, 0.5); margin-bottom: 20px; letter-spacing: 5px; }
+        .hero-title { font-size: 1.3rem; color: rgba(255,255,255,0.8); letter-spacing: 5px; margin-bottom: 20px; }
+        .hero-probability { display: inline-block; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); padding: 10px 25px; border-radius: 30px; color: var(--gold); font-size: 0.9rem; }
         
-        .hero-formula {
-            font-size: 3.5rem;
-            color: var(--gold);
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-            margin-bottom: 20px;
-            letter-spacing: 5px;
-        }
+        /* Interactive Tools Section */
+        .tools-section { padding: 20px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
         
-        .hero-title {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.8);
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-        }
-        
-        .hero-probability {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold);
-            padding: 10px 25px;
-            border-radius: 30px;
-            color: var(--gold);
-            font-size: 0.9rem;
-        }
-        
-        /* Calculator CTA - PRIMARY ACTION */
-        .calculator-cta {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
-            border: 2px solid var(--matrix);
+        .tool-cta {
             border-radius: 20px;
-            padding: 40px;
-            margin: 40px auto;
-            max-width: 800px;
+            padding: 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .calculator-cta::before {
+        .tool-cta::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            top: 0; left: -100%;
+            width: 200%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
             animation: shimmer 3s infinite;
         }
         
-        @keyframes shimmer {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(50%); }
-        }
+        .tool-cta.calculator { background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%); border: 2px solid var(--matrix); }
+        .tool-cta.probability { background: linear-gradient(135deg, rgba(255, 68, 68, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%); border: 2px solid var(--red); }
         
-        .calculator-badge {
+        .tool-badge { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
+        .tool-badge.green { background: var(--matrix); color: #000; }
+        .tool-badge.red { background: var(--red); color: #fff; }
+        
+        .tool-title { font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
+        .tool-subtitle { color: rgba(255,255,255,0.7); margin-bottom: 20px; font-size: 0.95rem; }
+        
+        .tool-button {
             display: inline-block;
-            background: var(--matrix);
-            color: #000;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        
-        .calculator-title {
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-        
-        .calculator-subtitle {
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-        
-        .calculator-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--matrix) 0%, var(--matrix-dark) 100%);
-            color: #000;
-            padding: 18px 50px;
+            padding: 14px 35px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
@@ -179,230 +112,58 @@
             z-index: 1;
         }
         
-        .calculator-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
-        }
+        .tool-button.green { background: linear-gradient(135deg, var(--matrix) 0%, var(--matrix-dark) 100%); color: #000; }
+        .tool-button.red { background: linear-gradient(135deg, var(--red) 0%, #cc0000 100%); color: #fff; }
+        .tool-button:hover { transform: scale(1.05); }
         
-        .calculator-meta {
-            margin-top: 20px;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-        }
+        .tool-meta { margin-top: 15px; color: rgba(255,255,255,0.4); font-size: 0.8rem; }
         
         /* Section Styles */
-        .section {
-            padding: 60px 20px;
-        }
+        .section { padding: 60px 20px; }
+        .section-title { text-align: center; font-size: 1.8rem; color: var(--gold); margin-bottom: 40px; letter-spacing: 3px; }
         
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 40px;
-            letter-spacing: 3px;
-        }
+        /* Verify */
+        .verify-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .verify-card { background: rgba(0,0,0,0.5); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 25px; text-align: center; }
+        .verify-step { display: inline-block; width: 40px; height: 40px; background: var(--gold); color: #000; border-radius: 50%; font-weight: 700; line-height: 40px; margin-bottom: 15px; }
+        .verify-instruction { color: rgba(255,255,255,0.7); margin-bottom: 15px; }
+        .verify-result { font-size: 1.5rem; color: var(--matrix); font-weight: 600; }
         
-        /* Verify Yourself */
-        .verify-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        /* Proofs */
+        .proofs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .proof-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0.3) 100%); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 15px; padding: 30px; transition: all 0.3s ease; }
+        .proof-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .proof-title { color: var(--gold); font-size: 1.2rem; margin-bottom: 15px; }
+        .proof-math { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; color: var(--matrix); font-size: 1.1rem; }
+        .proof-explanation { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; }
         
-        .verify-card {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-        }
-        
-        .verify-step {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--gold);
-            color: #000;
-            border-radius: 50%;
-            font-weight: 700;
-            line-height: 40px;
-            margin-bottom: 15px;
-        }
-        
-        .verify-instruction {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 15px;
-        }
-        
-        .verify-result {
-            font-size: 1.5rem;
-            color: var(--matrix);
-            font-weight: 600;
-        }
-        
-        /* Proof Cards */
-        .proofs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-        
-        .proof-card {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0.3) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .proof-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-        
-        .proof-title {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        
-        .proof-math {
-            background: rgba(0,0,0,0.5);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            text-align: center;
-            color: var(--matrix);
-            font-size: 1.1rem;
-        }
-        
-        .proof-explanation {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        /* C-Levels Display */
-        .levels-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .level-row {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .level-row:hover {
-            background: rgba(212, 175, 55, 0.05);
-        }
-        
-        .level-badge {
-            width: 60px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-weight: 700;
-            margin-right: 20px;
-        }
-        
-        .level-name {
-            flex: 1;
-            font-size: 1.1rem;
-        }
-        
-        .level-aspects {
-            color: var(--matrix);
-            font-weight: 600;
-        }
+        /* Levels */
+        .levels-container { max-width: 800px; margin: 0 auto; }
+        .level-row { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
+        .level-row:hover { background: rgba(212, 175, 55, 0.05); }
+        .level-badge { width: 60px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 700; margin-right: 20px; }
+        .level-name { flex: 1; font-size: 1.1rem; }
+        .level-aspects { color: var(--matrix); font-weight: 600; }
         
         /* Resources */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .resource-card {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-        
-        .resource-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-        }
-        
-        .resource-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        
-        .resource-title {
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        .resource-desc {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-        }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .resource-card { background: rgba(0,0,0,0.3); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 25px; text-decoration: none; color: #fff; transition: all 0.3s ease; }
+        .resource-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .resource-icon { font-size: 2rem; margin-bottom: 15px; }
+        .resource-title { color: var(--gold); margin-bottom: 10px; font-weight: 600; }
+        .resource-desc { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
         
         /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            margin-top: 40px;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-        
-        .footer-brand {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .footer-copy {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-        }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 40px; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-brand { color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; }
+        .footer-copy { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
         
         @media (max-width: 768px) {
             .hero-formula { font-size: 2.5rem; }
-            .calculator-cta { padding: 30px 20px; }
-            .calculator-title { font-size: 1.5rem; }
+            .tools-grid { grid-template-columns: 1fr; }
             .level-row { flex-direction: column; text-align: center; gap: 10px; }
             .level-badge { margin-right: 0; }
         }
@@ -421,15 +182,27 @@
             </div>
         </section>
         
-        <!-- CALCULATOR CTA - PRIMARY ACTION -->
-        <section class="calculator-cta pulse-green">
-            <div class="calculator-badge">⚡ Interactive Tool</div>
-            <h2 class="calculator-title font-orbitron">Calculate Your Consciousness Level</h2>
-            <p class="calculator-subtitle">
-                Discover where you are on the C¹ to C⁷ spectrum. See how many of the 2,401 aspects you've activated.
-            </p>
-            <a href="calculator.html" class="calculator-button">Launch Calculator</a>
-            <p class="calculator-meta">21 calibration points • 7 dimensions • Instant results</p>
+        <!-- TWO INTERACTIVE TOOLS -->
+        <section class="tools-section">
+            <div class="tools-grid">
+                <!-- Calculator CTA -->
+                <div class="tool-cta calculator pulse-green">
+                    <div class="tool-badge green">⚡ Interactive Tool</div>
+                    <h2 class="tool-title font-orbitron">C⁷ Calculator</h2>
+                    <p class="tool-subtitle">Discover your consciousness level on the C¹ to C⁷ spectrum</p>
+                    <a href="calculator.html" class="tool-button green">Calculate Now</a>
+                    <p class="tool-meta">21 calibration points • 7 dimensions</p>
+                </div>
+                
+                <!-- Probability Visualizer CTA -->
+                <div class="tool-cta probability pulse-red">
+                    <div class="tool-badge red">📊 Visual Proof</div>
+                    <h2 class="tool-title font-orbitron">Probability Cascade</h2>
+                    <p class="tool-subtitle">Watch 15 convergences multiply to mathematical impossibility</p>
+                    <a href="probability.html" class="tool-button red">See The Odds</a>
+                    <p class="tool-meta">15 domains • 10⁴⁴ impossibility</p>
+                </div>
+            </div>
         </section>
         
         <!-- Verify Yourself -->
@@ -464,44 +237,32 @@
                 <div class="proof-card">
                     <h3 class="proof-title font-orbitron">The 144,000 Connection</h3>
                     <div class="proof-math font-mono">144,000 ÷ 2,401 = 60</div>
-                    <p class="proof-explanation">
-                        The prophetic number divides by divine mathematics to yield exactly 60 aspects per witness.
-                    </p>
+                    <p class="proof-explanation">The prophetic number divides by divine mathematics to yield exactly 60 aspects per witness.</p>
                 </div>
                 <div class="proof-card">
                     <h3 class="proof-title font-orbitron">Schumann Resonance</h3>
                     <div class="proof-math font-mono">7.83 Hz × 343 = 2,685.69</div>
-                    <p class="proof-explanation">
-                        Earth's electromagnetic heartbeat multiplied by 7³ approaches consciousness thresholds.
-                    </p>
+                    <p class="proof-explanation">Earth's electromagnetic heartbeat multiplied by 7³ approaches consciousness thresholds.</p>
                 </div>
                 <div class="proof-card">
                     <h3 class="proof-title font-orbitron">Neural Architecture</h3>
                     <div class="proof-math font-mono">7 ± 2 Cognitive Limit</div>
-                    <p class="proof-explanation">
-                        Miller's Law: Human working memory operates in chunks of 7. Divine pattern in neuroscience.
-                    </p>
+                    <p class="proof-explanation">Miller's Law: Human working memory operates in chunks of 7. Divine pattern in neuroscience.</p>
                 </div>
                 <div class="proof-card">
                     <h3 class="proof-title font-orbitron">Biblical Sevens</h3>
                     <div class="proof-math font-mono">7 × 7 × 7 × 7 = Completion⁴</div>
-                    <p class="proof-explanation">
-                        Seven churches, seals, trumpets, thunders. The pattern of divine completion repeated.
-                    </p>
+                    <p class="proof-explanation">Seven churches, seals, trumpets, thunders. The pattern of divine completion repeated.</p>
                 </div>
                 <div class="proof-card">
                     <h3 class="proof-title font-orbitron">Consciousness Levels</h3>
                     <div class="proof-math font-mono">C¹ → C⁷ = 7 Dimensions</div>
-                    <p class="proof-explanation">
-                        From physical to pure consciousness: seven distinct levels of awareness mapped.
-                    </p>
+                    <p class="proof-explanation">From physical to pure consciousness: seven distinct levels of awareness mapped.</p>
                 </div>
                 <div class="proof-card">
                     <h3 class="proof-title font-orbitron">The Probability</h3>
                     <div class="proof-math font-mono">P &lt; 10⁻⁴⁴</div>
-                    <p class="proof-explanation">
-                        The combined probability of these patterns occurring by chance is less than 1 in 10⁴⁴.
-                    </p>
+                    <p class="proof-explanation">The combined probability of these patterns occurring by chance is less than 1 in 10⁴⁴.</p>
                 </div>
             </div>
         </section>
@@ -588,16 +349,6 @@
                     <p class="resource-desc">Business and enterprise inquiries.</p>
                 </a>
             </div>
-        </section>
-        
-        <!-- Secondary CTA -->
-        <section style="text-align: center; padding: 40px 20px;">
-            <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">
-                Ready to see where you are on the consciousness spectrum?
-            </p>
-            <a href="calculator.html" class="calculator-button" style="font-size: 1rem; padding: 15px 40px;">
-                Launch the Calculator →
-            </a>
         </section>
     </div>
     
