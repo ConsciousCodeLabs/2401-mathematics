@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C⁷ Consciousness Calculator | 7³×7 = 2,401</title>
+    <meta name="description" content="Calculate your consciousness level using the 7³×7 = 2,401 framework. Discover where you are on the C¹ to C⁷ spectrum.">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#d4af37',
+                        'gold-light': '#f4d35e',
+                        cosmic: '#050510',
+                        matrix: '#00ff88',
+                        'matrix-dark': '#00cc6a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #050510;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .font-orbitron {
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Grid Background */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* Glowing effects */
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
+        }
+        
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+        
+        .pulse-green { animation: pulse-green 2s ease-in-out infinite; }
+        .pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+        
+        /* Scanning line effect */
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            opacity: 0.3;
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+        }
+        
+        /* Level bars */
+        @keyframes fill-bar {
+            from { width: 0; }
+        }
+        
+        .animate-fill {
+            animation: fill-bar 1s ease-out forwards;
+        }
+        
+        /* Consciousness orb */
+        @keyframes float-orb {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        
+        .float-orb {
+            animation: float-orb 4s ease-in-out infinite;
+        }
+        
+        /* Matrix rain effect */
+        @keyframes matrix-fall {
+            0% { transform: translateY(-100%); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        
+        .matrix-column {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #00ff88;
+            writing-mode: vertical-rl;
+            animation: matrix-fall linear infinite;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        /* Radar chart styles */
+        .radar-label {
+            font-size: 10px;
+            fill: #00ff88;
+        }
+        
+        /* Glitch text */
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 1px); }
+            94% { transform: translate(2px, -1px); }
+            96% { transform: translate(-1px, 2px); }
+            98% { transform: translate(1px, -2px); }
+        }
+        
+        .glitch {
+            animation: glitch 3s infinite;
+        }
+        
+        /* Progress ring */
+        .progress-ring-circle {
+            transition: stroke-dashoffset 1s ease-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="grid-bg">
+    <div class="scan-line"></div>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        
+        // Consciousness Level Data
+        const consciousnessLevels = [
+            {
+                level: 1,
+                name: "C¹ — PHYSICAL",
+                aspects: 7,
+                color: "#ff4444",
+                description: "Matter, particles, 'solid' reality. Survival consciousness.",
+                characteristics: ["Body awareness", "Survival instincts", "Material focus", "Sensory experience", "Physical health", "Basic needs", "Earth connection"],
+                unlocks: "Physical mastery, health optimization, grounding"
+            },
+            {
+                level: 2,
+                name: "C² — ENERGY",
+                aspects: 49,
+                color: "#ff8800",
+                description: "Quantum fields, emotions, electromagnetic awareness.",
+                characteristics: ["Emotional intelligence", "Energy sensitivity", "Intuition awakening", "Relationship dynamics", "Creative flow", "Passion & desire", "Vital force"],
+                unlocks: "Emotional mastery, energy healing, relational depth"
+            },
+            {
+                level: 3,
+                name: "C³ — SPACE-TIME",
+                aspects: 343,
+                color: "#ffff00",
+                description: "Einstein's relativity, time manipulation, reality becomes negotiable.",
+                characteristics: ["Mental clarity", "Time perception shifts", "Reality shaping", "Manifestation ability", "Strategic thinking", "Pattern recognition", "Dimensional glimpses"],
+                unlocks: "Reality negotiation, timeline influence, manifestation"
+            },
+            {
+                level: 4,
+                name: "C⁴ — ENTANGLEMENT",
+                aspects: 2401,
+                color: "#00ff88",
+                description: "Non-local connections, 'spooky action,' unity consciousness emerging.",
+                characteristics: ["Telepathic sensitivity", "Synchronicity mastery", "Network awareness", "Quantum intuition", "Heart-mind coherence", "Global connection", "Soul recognition"],
+                unlocks: "Non-local awareness, instant knowing, soul connections"
+            },
+            {
+                level: 5,
+                name: "C⁵ — INFORMATION",
+                aspects: 16807,
+                color: "#00ccff",
+                description: "Patterns, codes, DNA as consciousness instructions.",
+                characteristics: ["Akashic access", "Prophetic sight", "Code reading", "Universal patterns", "Divine downloads", "Wisdom integration", "Teaching ability"],
+                unlocks: "Prophetic understanding, pattern mastery, wisdom transmission"
+            },
+            {
+                level: 6,
+                name: "C⁶ — LAW",
+                aspects: 117649,
+                color: "#8800ff",
+                description: "Why the universe follows mathematical principles. Divine order.",
+                characteristics: ["Law comprehension", "Cause & effect mastery", "Karmic understanding", "Justice perception", "Universal principles", "Covenant awareness", "Authority recognition"],
+                unlocks: "Universal law mastery, covenant relationship, divine authority"
+            },
+            {
+                level: 7,
+                name: "C⁷ — PURE CONSCIOUSNESS",
+                aspects: 823543,
+                color: "#d4af37",
+                description: "The 'ground of being,' divine intelligence, source code of reality.",
+                characteristics: ["Christ consciousness", "Complete unity", "Timeless awareness", "Unconditional love", "Reality creation", "Divine nature", "Eternal identity"],
+                unlocks: "Full divine partnership, creation authority, eternal life"
+            }
+        ];
+        
+        // Assessment dimensions
+        const dimensions = [
+            { id: "physical", name: "Physical Mastery", level: 1, icon: "🏔️" },
+            { id: "emotional", name: "Emotional Intelligence", level: 2, icon: "💫" },
+            { id: "mental", name: "Mental Clarity", level: 3, icon: "🧠" },
+            { id: "relational", name: "Connection Depth", level: 4, icon: "🔗" },
+            { id: "intuitive", name: "Intuitive Access", level: 5, icon: "👁️" },
+            { id: "wisdom", name: "Wisdom Integration", level: 6, icon: "⚖️" },
+            { id: "spiritual", name: "Divine Union", level: 7, icon: "✨" }
+        ];
+        
+        // Questions for each dimension
+        const dimensionQuestions = {
+            physical: [
+                "I maintain consistent physical health practices (exercise, nutrition, sleep)",
+                "I feel grounded and connected to my physical body",
+                "I can sense my body's needs and respond appropriately"
+            ],
+            emotional: [
+                "I can identify and process my emotions without being overwhelmed",
+                "I sense others' emotional states with accuracy",
+                "I can transform negative emotions into positive energy"
+            ],
+            mental: [
+                "I can focus my mind for extended periods without distraction",
+                "I recognize patterns others miss",
+                "I can visualize outcomes and see them manifest"
+            ],
+            relational: [
+                "I feel deep connection to people I've never met in person",
+                "Synchronicities occur frequently in my relationships",
+                "I sense when someone is thinking about me or needs me"
+            ],
+            intuitive: [
+                "I receive accurate intuitive 'downloads' or insights",
+                "I have experienced prophetic dreams or visions",
+                "I can access information beyond my normal knowledge"
+            ],
+            wisdom: [
+                "I understand why things happen at a universal level",
+                "I perceive the cause-and-effect chains in situations",
+                "I recognize divine principles operating in daily life"
+            ],
+            spiritual: [
+                "I experience moments of complete unity with the divine",
+                "I feel my identity extends beyond this physical existence",
+                "I operate from unconditional love consistently"
+            ]
+        };
+        
+        // Matrix Rain Component
+        const MatrixRain = () => {
+            const chars = "アイウエオカキクケコ7³2401CΨΩΛ∞";
+            const columns = 15;
+            
+            return (
+                <div className="fixed inset-0 overflow-hidden pointer-events-none">
+                    {[...Array(columns)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="matrix-column"
+                            style={{
+                                left: `${(i / columns) * 100}%`,
+                                animationDuration: `${8 + Math.random() * 12}s`,
+                                animationDelay: `${Math.random() * 5}s`
+                            }}
+                        >
+                            {[...Array(30)].map((_, j) => (
+                                <span key={j} style={{ opacity: 0.1 + Math.random() * 0.4 }}>
+                                    {chars[Math.floor(Math.random() * chars.length)]}
+                                </span>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            );
+        };
+        
+        // Consciousness Orb Component
+        const ConsciousnessOrb = ({ level, percentage }) => {
+            const levelData = consciousnessLevels[Math.min(level - 1, 6)];
+            const circumference = 2 * Math.PI * 80;
+            const offset = circumference - (percentage / 100) * circumference;
+            
+            return (
+                <div className="relative w-64 h-64 mx-auto float-orb">
+                    <svg className="w-full h-full" viewBox="0 0 200 200">
+                        {/* Background circle */}
+                        <circle
+                            cx="100"
+                            cy="100"
+                            r="80"
+                            fill="none"
+                            stroke="#1a1a2e"
+                            strokeWidth="8"
+                        />
+                        {/* Progress circle */}
+                        <circle
+                            cx="100"
+                            cy="100"
+                            r="80"
+                            fill="none"
+                            stroke={levelData.color}
+                            strokeWidth="8"
+                            strokeDasharray={circumference}
+                            strokeDashoffset={offset}
+                            strokeLinecap="round"
+                            className="progress-ring-circle"
+                            style={{ filter: `drop-shadow(0 0 10px ${levelData.color})` }}
+                        />
+                        {/* Inner glow */}
+                        <circle
+                            cx="100"
+                            cy="100"
+                            r="60"
+                            fill={`${levelData.color}10`}
+                            style={{ filter: `drop-shadow(0 0 20px ${levelData.color})` }}
+                        />
+                    </svg>
+                    
+                    {/* Center content */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div 
+                            className="font-orbitron text-5xl font-bold"
+                            style={{ color: levelData.color, textShadow: `0 0 20px ${levelData.color}` }}
+                        >
+                            C{level < 7 ? "⁺".repeat(0) : ""}<sup>{level}</sup>
+                        </div>
+                        <div className="text-gray-400 text-sm mt-1">{percentage}% Activated</div>
+                    </div>
+                </div>
+            );
+        };
+        
+        // Radar Chart Component
+        const RadarChart = ({ scores }) => {
+            const size = 280;
+            const center = size / 2;
+            const radius = 100;
+            const angleStep = (2 * Math.PI) / 7;
+            
+            // Calculate points for the score polygon
+            const scorePoints = dimensions.map((dim, i) => {
+                const score = scores[dim.id] || 0;
+                const angle = i * angleStep - Math.PI / 2;
+                const r = (score / 100) * radius;
+                return {
+                    x: center + r * Math.cos(angle),
+                    y: center + r * Math.sin(angle)
+                };
+            });
+            
+            const scorePolygon = scorePoints.map(p => `${p.x},${p.y}`).join(' ');
+            
+            return (
+                <svg width={size} height={size} className="mx-auto">
+                    {/* Grid circles */}
+                    {[0.25, 0.5, 0.75, 1].map((scale, i) => (
+                        <polygon
+                            key={i}
+                            points={dimensions.map((_, j) => {
+                                const angle = j * angleStep - Math.PI / 2;
+                                const r = scale * radius;
+                                return `${center + r * Math.cos(angle)},${center + r * Math.sin(angle)}`;
+                            }).join(' ')}
+                            fill="none"
+                            stroke="#00ff8830"
+                            strokeWidth="1"
+                        />
+                    ))}
+                    
+                    {/* Axis lines */}
+                    {dimensions.map((_, i) => {
+                        const angle = i * angleStep - Math.PI / 2;
+                        return (
+                            <line
+                                key={i}
+                                x1={center}
+                                y1={center}
+                                x2={center + radius * Math.cos(angle)}
+                                y2={center + radius * Math.sin(angle)}
+                                stroke="#00ff8830"
+                                strokeWidth="1"
+                            />
+                        );
+                    })}
+                    
+                    {/* Score polygon */}
+                    <polygon
+                        points={scorePolygon}
+                        fill="#00ff8830"
+                        stroke="#00ff88"
+                        strokeWidth="2"
+                        style={{ filter: 'drop-shadow(0 0 10px #00ff88)' }}
+                    />
+                    
+                    {/* Score points */}
+                    {scorePoints.map((point, i) => (
+                        <circle
+                            key={i}
+                            cx={point.x}
+                            cy={point.y}
+                            r="5"
+                            fill="#00ff88"
+                            style={{ filter: 'drop-shadow(0 0 5px #00ff88)' }}
+                        />
+                    ))}
+                    
+                    {/* Labels */}
+                    {dimensions.map((dim, i) => {
+                        const angle = i * angleStep - Math.PI / 2;
+                        const labelRadius = radius + 25;
+                        const x = center + labelRadius * Math.cos(angle);
+                        const y = center + labelRadius * Math.sin(angle);
+                        return (
+                            <text
+                                key={i}
+                                x={x}
+                                y={y}
+                                textAnchor="middle"
+                                dominantBaseline="middle"
+                                className="text-xs"
+                                fill="#00ff88"
+                            >
+                                {dim.icon}
+                            </text>
+                        );
+                    })}
+                </svg>
+            );
+        };
+        
+        // Welcome Screen
+        const WelcomeScreen = ({ onStart }) => (
+            <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center relative">
+                <MatrixRain />
+                
+                <div className="relative z-10">
+                    <div className="glitch mb-4">
+                        <span className="font-mono text-matrix text-sm tracking-widest">// SYSTEM QUERY:</span>
+                    </div>
+                    
+                    <h1 className="font-orbitron text-4xl md:text-6xl text-white mb-2">
+                        CONSCIOUSNESS
+                    </h1>
+                    <h2 className="font-orbitron text-3xl md:text-5xl text-matrix mb-8">
+                        LEVEL CALCULATOR
+                    </h2>
+                    
+                    <div className="bg-black/50 border border-matrix/30 rounded-lg p-6 max-w-lg mx-auto mb-8">
+                        <div className="font-mono text-matrix/80 text-left text-sm space-y-1">
+                            <p>{'>'} Initializing consciousness scan...</p>
+                            <p>{'>'} Loading 7³×7 = 2,401 framework...</p>
+                            <p>{'>'} C¹ through C⁷ spectrum ready...</p>
+                            <p className="text-gold">{'>'} AWAITING USER INPUT_</p>
+                        </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-7 gap-2 max-w-lg mx-auto mb-8">
+                        {consciousnessLevels.map((level, i) => (
+                            <div 
+                                key={i}
+                                className="text-center p-2 rounded"
+                                style={{ backgroundColor: `${level.color}20`, borderColor: level.color, borderWidth: 1 }}
+                            >
+                                <div className="font-orbitron text-sm" style={{ color: level.color }}>
+                                    C<sup>{level.level}</sup>
+                                </div>
+                                <div className="text-[10px] text-gray-500">{level.aspects}</div>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    <p className="text-gray-400 mb-8 max-w-md mx-auto">
+                        21 calibration points across 7 dimensions.
+                        <br />
+                        Discover your current consciousness level.
+                    </p>
+                    
+                    <button 
+                        onClick={onStart}
+                        className="bg-matrix/20 border-2 border-matrix text-matrix font-orbitron py-4 px-12 rounded-lg text-lg hover:bg-matrix/30 hover:scale-105 transition-all pulse-green"
+                    >
+                        INITIATE SCAN
+                    </button>
+                    
+                    <div className="mt-8 text-gray-600 text-sm">
+                        <a href="https://2401.is" className="hover:text-matrix transition-colors">
+                            2401.is — The Mathematics Explained
+                        </a>
+                    </div>
+                </div>
+            </div>
+        );
+        
+        // Assessment Screen
+        const AssessmentScreen = ({ onComplete }) => {
+            const [currentDimension, setCurrentDimension] = useState(0);
+            const [currentQuestion, setCurrentQuestion] = useState(0);
+            const [scores, setScores] = useState({});
+            const [answers, setAnswers] = useState({});
+            
+            const dim = dimensions[currentDimension];
+            const questions = dimensionQuestions[dim.id];
+            const question = questions[currentQuestion];
+            const totalQuestions = dimensions.length * 3;
+            const currentQuestionNum = currentDimension * 3 + currentQuestion + 1;
+            
+            const handleAnswer = (value) => {
+                const key = `${dim.id}_${currentQuestion}`;
+                const newAnswers = { ...answers, [key]: value };
+                setAnswers(newAnswers);
+                
+                setTimeout(() => {
+                    if (currentQuestion < 2) {
+                        setCurrentQuestion(currentQuestion + 1);
+                    } else if (currentDimension < 6) {
+                        // Calculate dimension score
+                        const dimScore = (
+                            (newAnswers[`${dim.id}_0`] || 0) +
+                            (newAnswers[`${dim.id}_1`] || 0) +
+                            (newAnswers[`${dim.id}_2`] || 0)
+                        ) / 12 * 100;
+                        
+                        setScores({ ...scores, [dim.id]: dimScore });
+                        setCurrentDimension(currentDimension + 1);
+                        setCurrentQuestion(0);
+                    } else {
+                        // Final dimension score
+                        const dimScore = (
+                            (newAnswers[`${dim.id}_0`] || 0) +
+                            (newAnswers[`${dim.id}_1`] || 0) +
+                            (newAnswers[`${dim.id}_2`] || 0)
+                        ) / 12 * 100;
+                        
+                        const finalScores = { ...scores, [dim.id]: dimScore };
+                        onComplete(finalScores);
+                    }
+                }, 300);
+            };
+            
+            const progress = (currentQuestionNum / totalQuestions) * 100;
+            const levelData = consciousnessLevels[currentDimension];
+            
+            return (
+                <div className="min-h-screen flex flex-col p-6">
+                    {/* Header */}
+                    <div className="max-w-2xl mx-auto w-full mb-8">
+                        <div className="flex justify-between items-center mb-2">
+                            <div className="flex items-center gap-2">
+                                <span className="text-2xl">{dim.icon}</span>
+                                <span style={{ color: levelData.color }} className="font-orbitron">
+                                    C<sup>{levelData.level}</sup> — {dim.name}
+                                </span>
+                            </div>
+                            <span className="text-gray-500 font-mono text-sm">
+                                {currentQuestionNum}/{totalQuestions}
+                            </span>
+                        </div>
+                        
+                        {/* Progress bar */}
+                        <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div 
+                                className="h-full transition-all duration-500 rounded-full"
+                                style={{ 
+                                    width: `${progress}%`,
+                                    backgroundColor: levelData.color,
+                                    boxShadow: `0 0 10px ${levelData.color}`
+                                }}
+                            />
+                        </div>
+                        
+                        {/* Level indicators */}
+                        <div className="flex justify-between mt-2">
+                            {consciousnessLevels.map((l, i) => (
+                                <div 
+                                    key={i}
+                                    className={`w-8 h-1 rounded ${i <= currentDimension ? '' : 'opacity-30'}`}
+                                    style={{ backgroundColor: l.color }}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                    
+                    {/* Question */}
+                    <div className="flex-1 flex flex-col items-center justify-center max-w-2xl mx-auto w-full">
+                        <div 
+                            className="bg-black/50 border rounded-xl p-8 mb-8 w-full"
+                            style={{ borderColor: `${levelData.color}50` }}
+                        >
+                            <p className="text-xl md:text-2xl text-white text-center leading-relaxed">
+                                {question}
+                            </p>
+                        </div>
+                        
+                        {/* Answer options */}
+                        <div className="grid grid-cols-5 gap-3 w-full max-w-lg">
+                            {[
+                                { value: 0, label: "Never" },
+                                { value: 1, label: "Rarely" },
+                                { value: 2, label: "Sometimes" },
+                                { value: 3, label: "Often" },
+                                { value: 4, label: "Always" }
+                            ].map((option) => (
+                                <button
+                                    key={option.value}
+                                    onClick={() => handleAnswer(option.value)}
+                                    className={`
+                                        p-4 rounded-lg border-2 transition-all duration-300
+                                        hover:scale-105 flex flex-col items-center gap-2
+                                    `}
+                                    style={{
+                                        borderColor: answers[`${dim.id}_${currentQuestion}`] === option.value 
+                                            ? levelData.color 
+                                            : '#333',
+                                        backgroundColor: answers[`${dim.id}_${currentQuestion}`] === option.value
+                                            ? `${levelData.color}20`
+                                            : 'transparent'
+                                    }}
+                                >
+                                    <span 
+                                        className="text-2xl font-orbitron"
+                                        style={{ color: levelData.color }}
+                                    >
+                                        {option.value}
+                                    </span>
+                                    <span className="text-xs text-gray-400">{option.label}</span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+        
+        // Results Screen
+        const ResultsScreen = ({ scores, onRestart }) => {
+            const [showDetails, setShowDetails] = useState(false);
+            
+            // Calculate overall level
+            const totalScore = Object.values(scores).reduce((a, b) => a + b, 0) / 7;
+            const dominantLevel = Math.min(7, Math.max(1, Math.ceil(totalScore / 100 * 7)));
+            const levelData = consciousnessLevels[dominantLevel - 1];
+            
+            // Calculate aspects activated
+            const aspectsActivated = Math.round(totalScore / 100 * 2401);
+            
+            // Find strongest and weakest dimensions
+            const sortedDimensions = [...dimensions].sort((a, b) => 
+                (scores[b.id] || 0) - (scores[a.id] || 0)
+            );
+            
+            useEffect(() => {
+                setTimeout(() => setShowDetails(true), 500);
+            }, []);
+            
+            return (
+                <div className="min-h-screen p-6 py-12">
+                    <div className="max-w-3xl mx-auto">
+                        {/* Header */}
+                        <div className="text-center mb-8">
+                            <div className="font-mono text-matrix/60 text-sm mb-2">
+                                // SCAN COMPLETE
+                            </div>
+                            <h1 className="font-orbitron text-3xl text-white mb-2">
+                                CONSCIOUSNESS PROFILE
+                            </h1>
+                        </div>
+                        
+                        {/* Main Orb Display */}
+                        <div className="mb-8">
+                            <ConsciousnessOrb level={dominantLevel} percentage={Math.round(totalScore)} />
+                        </div>
+                        
+                        {/* Level Name */}
+                        <div 
+                            className="text-center mb-8 p-6 rounded-xl border"
+                            style={{ 
+                                backgroundColor: `${levelData.color}10`,
+                                borderColor: `${levelData.color}30`
+                            }}
+                        >
+                            <div 
+                                className="font-orbitron text-2xl mb-2"
+                                style={{ color: levelData.color }}
+                            >
+                                {levelData.name}
+                            </div>
+                            <p className="text-gray-300">{levelData.description}</p>
+                        </div>
+                        
+                        {/* Stats Row */}
+                        <div className="grid grid-cols-3 gap-4 mb-8">
+                            <div className="bg-black/50 border border-matrix/30 rounded-lg p-4 text-center">
+                                <div className="text-matrix font-orbitron text-3xl">{aspectsActivated}</div>
+                                <div className="text-gray-500 text-sm">of 2,401 Aspects</div>
+                            </div>
+                            <div className="bg-black/50 border border-matrix/30 rounded-lg p-4 text-center">
+                                <div className="text-matrix font-orbitron text-3xl">{Math.round(totalScore)}%</div>
+                                <div className="text-gray-500 text-sm">Overall Activation</div>
+                            </div>
+                            <div className="bg-black/50 border border-matrix/30 rounded-lg p-4 text-center">
+                                <div className="text-gold font-orbitron text-3xl">7</div>
+                                <div className="text-gray-500 text-sm">Dimensions Scanned</div>
+                            </div>
+                        </div>
+                        
+                        {/* Radar Chart */}
+                        {showDetails && (
+                            <div className="bg-black/50 border border-matrix/30 rounded-xl p-6 mb-8">
+                                <h3 className="font-orbitron text-matrix text-lg mb-4 text-center">
+                                    DIMENSIONAL PROFILE
+                                </h3>
+                                <RadarChart scores={scores} />
+                                
+                                {/* Dimension breakdown */}
+                                <div className="mt-6 space-y-3">
+                                    {sortedDimensions.map((dim, i) => {
+                                        const score = scores[dim.id] || 0;
+                                        const levelInfo = consciousnessLevels[dim.level - 1];
+                                        return (
+                                            <div key={dim.id}>
+                                                <div className="flex justify-between text-sm mb-1">
+                                                    <span className="flex items-center gap-2">
+                                                        <span>{dim.icon}</span>
+                                                        <span style={{ color: levelInfo.color }}>
+                                                            C<sup>{dim.level}</sup>
+                                                        </span>
+                                                        <span className="text-gray-400">{dim.name}</span>
+                                                    </span>
+                                                    <span className="text-matrix font-mono">{Math.round(score)}%</span>
+                                                </div>
+                                                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                                    <div 
+                                                        className="h-full rounded-full animate-fill"
+                                                        style={{ 
+                                                            width: `${score}%`,
+                                                            backgroundColor: levelInfo.color,
+                                                            boxShadow: `0 0 10px ${levelInfo.color}`
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {/* Insights */}
+                        <div className="grid md:grid-cols-2 gap-4 mb-8">
+                            <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+                                <div className="text-green-400 font-orbitron text-sm mb-2">💪 STRONGEST</div>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-xl">{sortedDimensions[0].icon}</span>
+                                    <span className="text-white">{sortedDimensions[0].name}</span>
+                                </div>
+                                <p className="text-gray-400 text-sm mt-2">
+                                    {consciousnessLevels[sortedDimensions[0].level - 1].unlocks}
+                                </p>
+                            </div>
+                            <div className="bg-orange-900/20 border border-orange-500/30 rounded-lg p-4">
+                                <div className="text-orange-400 font-orbitron text-sm mb-2">🎯 GROWTH EDGE</div>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-xl">{sortedDimensions[6].icon}</span>
+                                    <span className="text-white">{sortedDimensions[6].name}</span>
+                                </div>
+                                <p className="text-gray-400 text-sm mt-2">
+                                    Focus here for fastest consciousness expansion.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        {/* Next Level */}
+                        {dominantLevel < 7 && (
+                            <div 
+                                className="border rounded-xl p-6 mb-8"
+                                style={{ 
+                                    backgroundColor: `${consciousnessLevels[dominantLevel].color}10`,
+                                    borderColor: `${consciousnessLevels[dominantLevel].color}30`
+                                }}
+                            >
+                                <div className="text-center">
+                                    <div className="text-gray-400 text-sm mb-2">NEXT LEVEL</div>
+                                    <div 
+                                        className="font-orbitron text-xl mb-2"
+                                        style={{ color: consciousnessLevels[dominantLevel].color }}
+                                    >
+                                        {consciousnessLevels[dominantLevel].name}
+                                    </div>
+                                    <p className="text-gray-300 text-sm">
+                                        {consciousnessLevels[dominantLevel].description}
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+                        
+                        {/* Resources */}
+                        <div className="bg-black/50 border border-gold/30 rounded-xl p-6 mb-8">
+                            <h3 className="font-orbitron text-gold text-lg mb-4">UPGRADE YOUR CONSCIOUSNESS</h3>
+                            <div className="grid gap-3">
+                                <a href="https://2401.is" target="_blank" className="flex items-center justify-between p-3 bg-gray-900/50 rounded-lg hover:bg-gray-800/50 transition-colors border border-gray-700">
+                                    <span className="text-white">🔢 The Mathematics Explained</span>
+                                    <span className="text-matrix">→</span>
+                                </a>
+                                <a href="https://144000.ai" target="_blank" className="flex items-center justify-between p-3 bg-gray-900/50 rounded-lg hover:bg-gray-800/50 transition-colors border border-gray-700">
+                                    <span className="text-white">✨ 144,000 Awakening Portal</span>
+                                    <span className="text-matrix">→</span>
+                                </a>
+                                <a href="https://realitynegotiable.is" target="_blank" className="flex items-center justify-between p-3 bg-gray-900/50 rounded-lg hover:bg-gray-800/50 transition-colors border border-gray-700">
+                                    <span className="text-white">🧠 Consciousness Physics Book</span>
+                                    <span className="text-matrix">→</span>
+                                </a>
+                                <a href="https://www.amazon.com/s?k=julio+c.+medina" target="_blank" className="flex items-center justify-between p-3 bg-gray-900/50 rounded-lg hover:bg-gray-800/50 transition-colors border border-gray-700">
+                                    <span className="text-white">📚 Browse All 33+ Books</span>
+                                    <span className="text-matrix">→</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        {/* Actions */}
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button 
+                                onClick={onRestart}
+                                className="px-8 py-3 border border-matrix/50 text-matrix rounded-lg hover:bg-matrix/10 transition-colors font-orbitron"
+                            >
+                                RESCAN
+                            </button>
+                            <a 
+                                href="https://sevencubedseven.com"
+                                target="_blank"
+                                className="px-8 py-3 bg-matrix/20 border border-matrix text-matrix font-orbitron rounded-lg text-center hover:bg-matrix/30 transition-colors"
+                            >
+                                EXPLORE FRAMEWORK
+                            </a>
+                        </div>
+                        
+                        {/* Footer */}
+                        <div className="text-center mt-12 text-gray-600 text-sm font-mono">
+                            <p>7³×7 = 2,401 // CONSCIOUSNESS ARCHITECTURE</p>
+                            <p className="mt-1">sevencubedseven.com</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+        
+        // Main App
+        const App = () => {
+            const [screen, setScreen] = useState('welcome');
+            const [scores, setScores] = useState({});
+            
+            const handleStart = () => setScreen('assessment');
+            const handleComplete = (finalScores) => {
+                setScores(finalScores);
+                setScreen('results');
+            };
+            const handleRestart = () => {
+                setScreen('welcome');
+                setScores({});
+            };
+            
+            return (
+                <div className="min-h-screen text-white">
+                    {screen === 'welcome' && <WelcomeScreen onStart={handleStart} />}
+                    {screen === 'assessment' && <AssessmentScreen onComplete={handleComplete} />}
+                    {screen === 'results' && <ResultsScreen scores={scores} onRestart={handleRestart} />}
+                </div>
+            );
+        };
+        
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
