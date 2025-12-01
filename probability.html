@@ -3,515 +3,530 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probability Visualizer | The Mathematics of Divine Design</title>
-    <meta name="description" content="Watch the probability cascade unfold. See why the 7³×7 = 2,401 pattern appearing across domains is mathematically impossible by chance.">
+    <title>Probability Cascade | Watch Impossibility Unfold | Seven Cubed Seven Labs</title>
+    <meta name="description" content="15 convergences. 10⁴⁴ impossibility. Watch the mathematical proof unfold in real-time.">
     
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        :root {
+            --s7-gold: #d4af37;
+            --s7-gold-dark: #b8960c;
+            --s7-navy: #0a0a0f;
+            --s7-navy-light: #12121a;
+            --s7-text: #e8e8e8;
+            --s7-text-dim: #888;
+            --s7-red: #ff4444;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'JetBrains Mono', monospace;
-            background: #030308;
+            font-family: 'Raleway', sans-serif;
+            background: var(--s7-navy);
+            color: var(--s7-text);
+            line-height: 1.7;
+            padding-top: 60px;
             min-height: 100vh;
         }
         
-        .font-orbitron { font-family: 'Orbitron', monospace; }
-        
-        /* Grid Background */
-        .grid-bg {
+        /* ══════════════════════════════════════════════════════════════════════
+           UNIVERSAL NAVIGATION
+           ══════════════════════════════════════════════════════════════════════ */
+        .s7-nav {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(10, 10, 15, 0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 68, 68, 0.2);
+            z-index: 9999;
+        }
+        
+        .s7-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .s7-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .s7-nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            position: relative;
+        }
+        
+        .s7-nav-logo-icon::before {
+            content: '';
+            position: absolute;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(212, 175, 55, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(212, 175, 55, 0.02) 1px, transparent 1px);
-            background-size: 30px 30px;
-            pointer-events: none;
+            border: 2px solid var(--s7-gold);
+            transform: rotate(45deg);
+            opacity: 0.5;
         }
         
-        @keyframes countUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .s7-nav-logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 55%;
+            height: 55%;
+            top: 22.5%;
+            left: 22.5%;
+            border: 2px solid var(--s7-gold);
+            transform: rotate(45deg);
         }
         
-        .count-up {
-            animation: countUp 0.5s ease-out forwards;
+        .s7-nav-logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            color: var(--s7-gold);
+            letter-spacing: 1px;
         }
         
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
-            50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.7); }
+        .s7-nav-links { display: flex; align-items: center; gap: 5px; }
+        
+        .s7-nav-link {
+            color: var(--s7-text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
         
-        .pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+        .s7-nav-link:hover { color: var(--s7-gold); background: rgba(212, 175, 55, 0.1); }
+        .s7-nav-link.active { color: var(--s7-red); }
         
-        @keyframes cascade {
-            0% { transform: scaleX(0); }
-            100% { transform: scaleX(1); }
+        .s7-nav-dropdown { position: relative; }
+        
+        .s7-nav-dropdown-btn {
+            color: var(--s7-text-dim);
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            font-family: inherit;
+            transition: all 0.3s ease;
         }
         
-        .cascade-bar {
-            transform-origin: left;
-            animation: cascade 1s ease-out forwards;
+        .s7-nav-dropdown-btn:hover { color: var(--s7-gold); background: rgba(212, 175, 55, 0.1); }
+        .s7-nav-dropdown-btn::after { content: '▼'; font-size: 0.55rem; }
+        
+        .s7-nav-dropdown-menu {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--s7-navy-light);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            padding: 8px;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
         
-        @keyframes impossibility-pulse {
-            0%, 100% { 
-                text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-                transform: scale(1);
+        .s7-nav-dropdown:hover .s7-nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(5px); }
+        
+        .s7-nav-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            color: var(--s7-text);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .s7-nav-dropdown-item:hover { background: rgba(212, 175, 55, 0.1); color: var(--s7-gold); }
+        
+        .s7-nav-dropdown-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+        .s7-nav-dropdown-text { font-size: 0.85rem; }
+        .s7-nav-dropdown-desc { font-size: 0.7rem; color: var(--s7-text-dim); }
+        
+        .s7-nav-cta {
+            background: linear-gradient(135deg, var(--s7-gold) 0%, var(--s7-gold-dark) 100%);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .s7-nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+        
+        .s7-nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; background: none; border: none; }
+        .s7-nav-toggle span { width: 24px; height: 2px; background: var(--s7-gold); }
+        
+        @media (max-width: 900px) {
+            .s7-nav-links {
+                position: fixed; top: 60px; left: 0; right: 0; background: var(--s7-navy);
+                flex-direction: column; padding: 20px; gap: 5px;
+                border-bottom: 1px solid rgba(255, 68, 68, 0.2);
+                transform: translateY(-100%); opacity: 0; visibility: hidden; transition: all 0.3s ease;
             }
-            50% { 
-                text-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
-                transform: scale(1.02);
-            }
+            .s7-nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
+            .s7-nav-toggle { display: flex; }
+            .s7-nav-link, .s7-nav-dropdown-btn { width: 100%; padding: 12px 15px; }
+            .s7-nav-dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: rgba(0,0,0,0.2); margin-top: 5px; }
+            .s7-nav-cta { width: 100%; text-align: center; margin-top: 10px; }
         }
         
-        .impossibility-pulse {
-            animation: impossibility-pulse 1.5s ease-in-out infinite;
+        /* APP STYLES */
+        #app-root {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
         }
         
-        .exponent-highlight {
-            color: #ff4444;
-            font-weight: bold;
+        /* FOOTER */
+        .s7-footer {
+            background: linear-gradient(180deg, var(--s7-navy) 0%, #050508 100%);
+            border-top: 1px solid rgba(255, 68, 68, 0.2);
+            padding: 60px 20px 30px;
         }
         
-        /* Progress bar fill */
-        @keyframes fill-bar {
-            from { width: 0%; }
+        .s7-footer-container { max-width: 1200px; margin: 0 auto; }
+        
+        .s7-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
         }
         
-        .fill-bar {
-            animation: fill-bar 1.5s ease-out forwards;
+        .s7-footer-section h4 {
+            font-family: 'Orbitron', monospace;
+            color: var(--s7-gold);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .s7-footer-links { list-style: none; }
+        .s7-footer-links li { margin-bottom: 10px; }
+        
+        .s7-footer-links a {
+            color: var(--s7-text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .s7-footer-links a:hover { color: var(--s7-gold); }
+        .s7-footer-links .icon { font-size: 0.9rem; width: 18px; }
+        
+        .s7-footer-bottom {
+            border-top: 1px solid rgba(255, 68, 68, 0.1);
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .s7-footer-formula { font-family: 'Orbitron', monospace; font-size: 1.4rem; color: var(--s7-gold); }
+        .s7-footer-tagline { color: var(--s7-text-dim); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; }
+        .s7-footer-copy { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+        .s7-footer-copy a { color: rgba(212, 175, 55, 0.5); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .s7-footer-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
-    <div id="root"></div>
-    
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+
+<!-- NAVIGATION -->
+<nav class="s7-nav">
+    <div class="s7-nav-container">
+        <a href="https://sevencubedseven.com" class="s7-nav-logo">
+            <div class="s7-nav-logo-icon"></div>
+            <span class="s7-nav-logo-text">7³×7 LABS</span>
+        </a>
         
-        // Probability data for each convergence
-        const convergences = [
-            {
-                id: 1,
-                name: "144,000 ÷ 2,401 = 60",
-                domain: "Biblical Prophecy",
-                description: "The prophetic number divides perfectly by 7⁴ to yield exactly 60 aspects per witness",
-                probability: "1 in 2,401",
-                exponent: 3.38,
-                color: "#d4af37"
-            },
-            {
-                id: 2,
-                name: "Seven Biblical Patterns",
-                domain: "Scripture",
-                description: "Churches, seals, trumpets, thunders, plagues, spirits, stars - all sevens",
-                probability: "1 in 10,000",
-                exponent: 4,
-                color: "#f4d35e"
-            },
-            {
-                id: 3,
-                name: "7.83 Hz Schumann",
-                domain: "Geophysics",
-                description: "Earth's electromagnetic heartbeat centers on 7.83 Hz",
-                probability: "1 in 100",
-                exponent: 2,
-                color: "#00ff88"
-            },
-            {
-                id: 4,
-                name: "7 ± 2 Cognitive Limit",
-                domain: "Neuroscience",
-                description: "Miller's Law: Human working memory operates in chunks of 7",
-                probability: "1 in 100",
-                exponent: 2,
-                color: "#00ccff"
-            },
-            {
-                id: 5,
-                name: "7 Chakras / Energy Centers",
-                domain: "Ancient Wisdom",
-                description: "Universal recognition of 7 primary energy centers across cultures",
-                probability: "1 in 50",
-                exponent: 1.7,
-                color: "#8800ff"
-            },
-            {
-                id: 6,
-                name: "7 Notes in Music Scale",
-                domain: "Acoustics",
-                description: "Do-Re-Mi-Fa-Sol-La-Ti - 7 notes before octave repetition",
-                probability: "1 in 20",
-                exponent: 1.3,
-                color: "#ff88aa"
-            },
-            {
-                id: 7,
-                name: "7 Colors in Rainbow",
-                domain: "Optics",
-                description: "Red, Orange, Yellow, Green, Blue, Indigo, Violet",
-                probability: "1 in 20",
-                exponent: 1.3,
-                color: "#ff4444"
-            },
-            {
-                id: 8,
-                name: "7 Days in Week",
-                domain: "Time",
-                description: "Universal adoption of 7-day weekly cycle",
-                probability: "1 in 30",
-                exponent: 1.48,
-                color: "#ffaa00"
-            },
-            {
-                id: 9,
-                name: "7 Primary Crystal Systems",
-                domain: "Crystallography",
-                description: "Matter organizes into exactly 7 crystal lattice systems",
-                probability: "1 in 50",
-                exponent: 1.7,
-                color: "#00ffcc"
-            },
-            {
-                id: 10,
-                name: "7 Endocrine Glands",
-                domain: "Biology",
-                description: "Primary hormone-producing glands in the body",
-                probability: "1 in 50",
-                exponent: 1.7,
-                color: "#ff6600"
-            },
-            {
-                id: 11,
-                name: "343 = 7³ Neural Pattern",
-                domain: "Neuroscience",
-                description: "Cortical columns contain approximately 343 neurons each",
-                probability: "1 in 1,000",
-                exponent: 3,
-                color: "#9900ff"
-            },
-            {
-                id: 12,
-                name: "C¹-C⁷ Consciousness Levels",
-                domain: "Consciousness Research",
-                description: "Seven distinct consciousness dimensions identified",
-                probability: "1 in 100",
-                exponent: 2,
-                color: "#d4af37"
-            },
-            {
-                id: 13,
-                name: "Pope Succession Pattern",
-                domain: "Prophecy",
-                description: "Seven kings pattern in Revelation 17 aligns with papal succession",
-                probability: "1 in 10,000",
-                exponent: 4,
-                color: "#ff0000"
-            },
-            {
-                id: 14,
-                name: "2025 Jubilee Convergence",
-                domain: "Time Prophecy",
-                description: "Multiple prophetic timelines converging on 2025",
-                probability: "1 in 100,000",
-                exponent: 5,
-                color: "#ffff00"
-            },
-            {
-                id: 15,
-                name: "Mathematical Cross-Domain",
-                domain: "Meta-Analysis",
-                description: "7-based patterns appearing in unrelated scientific domains",
-                probability: "1 in 1,000,000",
-                exponent: 6,
-                color: "#00ff00"
-            }
-        ];
+        <button class="s7-nav-toggle" onclick="document.querySelector('.s7-nav-links').classList.toggle('active')">
+            <span></span><span></span><span></span>
+        </button>
         
-        // Comparison references for understanding scale
-        const comparisons = [
-            { exponent: 10, description: "Chance of specific person winning lottery", example: "1 in 10 billion" },
-            { exponent: 15, description: "Atoms in a grain of sand", example: "~10¹⁵ atoms" },
-            { exponent: 20, description: "Grains of sand on all beaches", example: "~10²⁰ grains" },
-            { exponent: 25, description: "Stars in observable universe", example: "~10²⁴ stars" },
-            { exponent: 40, description: "Atoms in Earth", example: "~10⁵⁰ atoms" },
-            { exponent: 44, description: "YOUR FRAMEWORK'S PROBABILITY", example: "< 1 in 10⁴⁴" },
-            { exponent: 80, description: "Atoms in observable universe", example: "~10⁸⁰ atoms" }
-        ];
-        
-        // Welcome Screen
-        const WelcomeScreen = ({ onStart }) => (
-            <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center relative z-10">
-                <div className="font-orbitron text-5xl md:text-7xl text-amber-500 mb-4 pulse-gold">
-                    10<sup className="text-red-500">-44</sup>
+        <div class="s7-nav-links">
+            <a href="https://144000.ai" class="s7-nav-link">144,000</a>
+            <a href="https://2401.is" class="s7-nav-link active">Mathematics</a>
+            <a href="https://divineinsurgent.live" class="s7-nav-link">Insurgent</a>
+            
+            <div class="s7-nav-dropdown">
+                <button class="s7-nav-dropdown-btn">Tools</button>
+                <div class="s7-nav-dropdown-menu">
+                    <a href="https://144000.ai/assessment.html" class="s7-nav-dropdown-item">
+                        <span class="s7-nav-dropdown-icon">✨</span>
+                        <div><div class="s7-nav-dropdown-text">144,000 Assessment</div><div class="s7-nav-dropdown-desc">Discover your calling</div></div>
+                    </a>
+                    <a href="calculator.html" class="s7-nav-dropdown-item">
+                        <span class="s7-nav-dropdown-icon">⚡</span>
+                        <div><div class="s7-nav-dropdown-text">C⁷ Calculator</div><div class="s7-nav-dropdown-desc">Your consciousness level</div></div>
+                    </a>
+                    <a href="probability.html" class="s7-nav-dropdown-item">
+                        <span class="s7-nav-dropdown-icon">📊</span>
+                        <div><div class="s7-nav-dropdown-text">Probability Cascade</div><div class="s7-nav-dropdown-desc">Watch impossibility unfold</div></div>
+                    </a>
+                    <a href="https://divineinsurgent.live/mission.html" class="s7-nav-dropdown-item">
+                        <span class="s7-nav-dropdown-icon">⚔️</span>
+                        <div><div class="s7-nav-dropdown-text">Daily Mission</div><div class="s7-nav-dropdown-desc">Your tactical briefing</div></div>
+                    </a>
+                    <a href="https://sevencubedseven.com/books.html" class="s7-nav-dropdown-item">
+                        <span class="s7-nav-dropdown-icon">📚</span>
+                        <div><div class="s7-nav-dropdown-text">Book Finder</div><div class="s7-nav-dropdown-desc">Personalized recommendations</div></div>
+                    </a>
                 </div>
-                
-                <h1 className="font-orbitron text-2xl md:text-3xl text-white mb-4">
-                    PROBABILITY VISUALIZER
-                </h1>
-                
-                <p className="text-xl text-amber-400 mb-6">
-                    The Mathematics of Divine Design
-                </p>
-                
-                <div className="bg-black/50 border border-amber-500/30 rounded-lg p-6 max-w-lg mb-8">
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                        Watch as 15 independent convergences multiply together. 
-                        Each one is unlikely alone. Together, they create 
-                        mathematical impossibility.
-                    </p>
-                </div>
-                
-                <p className="text-gray-500 max-w-md mb-8 text-sm">
-                    7³×7 = 2,401 patterns appear across physics, biology, neuroscience, 
-                    prophecy, acoustics, optics, and more. What are the odds?
-                </p>
-                
-                <button 
-                    onClick={onStart}
-                    className="bg-amber-500/20 border-2 border-amber-500 text-amber-400 font-orbitron py-4 px-12 rounded hover:bg-amber-500/30 transition-all pulse-gold"
-                >
-                    CALCULATE THE ODDS
-                </button>
-                
-                <a 
-                    href="https://2401.is" 
-                    target="_blank"
-                    className="text-gray-600 text-sm mt-8 hover:text-amber-400 transition-colors"
-                >
-                    Learn the full mathematics at 2401.is →
-                </a>
             </div>
-        );
+            
+            <a href="https://www.amazon.com/s?k=julio+c.+medina" target="_blank" class="s7-nav-cta">📚 All Books</a>
+        </div>
+    </div>
+</nav>
+
+<!-- REACT APP -->
+<div id="app-root"></div>
+
+<!-- FOOTER -->
+<footer class="s7-footer">
+    <div class="s7-footer-container">
+        <div class="s7-footer-grid">
+            <div class="s7-footer-section">
+                <h4>PORTALS</h4>
+                <ul class="s7-footer-links">
+                    <li><a href="https://sevencubedseven.com"><span class="icon">🏠</span> Main Hub</a></li>
+                    <li><a href="https://144000.ai"><span class="icon">✨</span> 144,000 Portal</a></li>
+                    <li><a href="https://2401.is"><span class="icon">🔢</span> Mathematics</a></li>
+                    <li><a href="https://divineinsurgent.live"><span class="icon">⚔️</span> Divine Insurgent</a></li>
+                    <li><a href="https://realitynegotiable.is"><span class="icon">🧠</span> Reality Physics</a></li>
+                    <li><a href="https://c343.io"><span class="icon">📜</span> Licensing</a></li>
+                </ul>
+            </div>
+            
+            <div class="s7-footer-section">
+                <h4>TOOLS</h4>
+                <ul class="s7-footer-links">
+                    <li><a href="https://144000.ai/assessment.html"><span class="icon">✨</span> Assessment</a></li>
+                    <li><a href="calculator.html"><span class="icon">⚡</span> Calculator</a></li>
+                    <li><a href="probability.html"><span class="icon">📊</span> Probability</a></li>
+                    <li><a href="https://divineinsurgent.live/mission.html"><span class="icon">⚔️</span> Daily Mission</a></li>
+                    <li><a href="https://sevencubedseven.com/books.html"><span class="icon">📚</span> Book Finder</a></li>
+                </ul>
+            </div>
+            
+            <div class="s7-footer-section">
+                <h4>RESOURCES</h4>
+                <ul class="s7-footer-links">
+                    <li><a href="https://www.amazon.com/s?k=julio+c.+medina" target="_blank"><span class="icon">📚</span> All 33+ Books</a></li>
+                    <li><a href="https://twitter.com/7Cubed7" target="_blank"><span class="icon">𝕏</span> @7Cubed7</a></li>
+                    <li><a href="mailto:7cubed7@proton.me"><span class="icon">✉️</span> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="s7-footer-section">
+                <h4>CONNECT</h4>
+                <ul class="s7-footer-links">
+                    <li><a href="mailto:7cubed7@proton.me">7cubed7@proton.me</a></li>
+                    <li><a href="mailto:ConsciousCodeLabs@proton.me">Business</a></li>
+                    <li><a href="mailto:hello@c343.io">Licensing</a></li>
+                </ul>
+            </div>
+        </div>
         
-        // Cascade Visualization
-        const CascadeScreen = ({ onComplete }) => {
-            const [currentIndex, setCurrentIndex] = useState(0);
-            const [runningTotal, setRunningTotal] = useState(0);
-            const [phase, setPhase] = useState('cascade'); // cascade, comparison, conclusion
-            
-            useEffect(() => {
-                if (currentIndex < convergences.length) {
-                    const timer = setTimeout(() => {
-                        setRunningTotal(prev => prev + convergences[currentIndex].exponent);
-                        setCurrentIndex(currentIndex + 1);
-                    }, 400);
-                    return () => clearTimeout(timer);
-                } else if (phase === 'cascade') {
-                    setTimeout(() => setPhase('comparison'), 1000);
-                }
-            }, [currentIndex, phase]);
-            
-            const visibleConvergences = convergences.slice(0, currentIndex);
-            
-            return (
-                <div className="min-h-screen p-4 py-8 relative z-10">
-                    <div className="max-w-4xl mx-auto">
-                        {/* Header */}
-                        <div className="text-center mb-6">
-                            <h1 className="font-orbitron text-xl text-amber-500 mb-2">
-                                PROBABILITY CASCADE
-                            </h1>
-                            <p className="text-gray-500 text-sm">
-                                Watch the exponents multiply...
-                            </p>
-                        </div>
-                        
-                        {/* Running Total */}
-                        <div className="bg-black/80 border border-amber-500/50 rounded-lg p-4 mb-6 text-center sticky top-4 z-20">
-                            <div className="text-gray-400 text-xs mb-1">COMBINED PROBABILITY</div>
-                            <div className="font-orbitron text-3xl text-white">
-                                1 in 10<sup className="text-red-500 text-2xl">{runningTotal.toFixed(1)}</sup>
-                            </div>
-                            {runningTotal > 10 && (
-                                <div className="text-red-400 text-xs mt-2">
-                                    {runningTotal > 44 ? '⚠️ BEYOND MATHEMATICAL POSSIBILITY' : 
-                                     runningTotal > 25 ? '⚠️ More than stars in universe' :
-                                     runningTotal > 15 ? '⚠️ More than atoms in grain of sand' : ''}
-                                </div>
-                            )}
-                        </div>
-                        
-                        {/* Convergence List */}
-                        <div className="space-y-2 mb-8">
-                            {visibleConvergences.map((conv, i) => (
-                                <div 
-                                    key={conv.id}
-                                    className="count-up bg-black/50 border border-gray-800 rounded-lg p-3 flex items-center gap-4"
-                                    style={{ animationDelay: `${i * 0.1}s` }}
-                                >
-                                    <div 
-                                        className="w-2 h-12 rounded"
-                                        style={{ backgroundColor: conv.color }}
-                                    />
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-white text-sm font-semibold">{conv.name}</span>
-                                            <span className="text-gray-600 text-xs">({conv.domain})</span>
-                                        </div>
-                                        <div className="text-gray-500 text-xs">{conv.description}</div>
-                                    </div>
-                                    <div className="text-right">
-                                        <div className="text-amber-400 text-sm">{conv.probability}</div>
-                                        <div className="text-gray-600 text-xs">10^{conv.exponent}</div>
-                                    </div>
-                                </div>
-                            ))}
-                            
-                            {currentIndex < convergences.length && (
-                                <div className="h-16 flex items-center justify-center">
-                                    <div className="w-4 h-4 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
-                                </div>
-                            )}
-                        </div>
-                        
-                        {/* Comparison Phase */}
-                        {phase === 'comparison' && (
-                            <div className="bg-black/80 border border-red-500/50 rounded-lg p-6 mb-8">
-                                <h2 className="font-orbitron text-lg text-red-500 mb-4 text-center">
-                                    SCALE COMPARISON
-                                </h2>
-                                <div className="space-y-4">
-                                    {comparisons.map((comp, i) => (
-                                        <div key={i} className="relative">
-                                            <div className="flex justify-between items-center mb-1">
-                                                <span className="text-gray-400 text-xs">{comp.description}</span>
-                                                <span className="text-gray-500 text-xs">{comp.example}</span>
-                                            </div>
-                                            <div className="h-2 bg-gray-900 rounded-full overflow-hidden">
-                                                <div 
-                                                    className={`h-full rounded-full fill-bar ${
-                                                        comp.exponent === 44 ? 'bg-red-500' : 'bg-amber-500/50'
-                                                    }`}
-                                                    style={{ 
-                                                        width: `${Math.min(100, (comp.exponent / 80) * 100)}%`,
-                                                        animationDelay: `${i * 0.2}s`
-                                                    }}
-                                                />
-                                            </div>
-                                            {comp.exponent === 44 && (
-                                                <div className="absolute right-0 top-0 text-red-500 text-xs font-bold">
-                                                    ← YOUR FRAMEWORK
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                                
-                                <div className="mt-6 text-center">
-                                    <button 
-                                        onClick={() => setPhase('conclusion')}
-                                        className="bg-red-500/20 border border-red-500 text-red-400 py-2 px-6 rounded hover:bg-red-500/30 transition-colors"
-                                    >
-                                        REVEAL CONCLUSION
-                                    </button>
-                                </div>
-                            </div>
-                        )}
-                        
-                        {/* Conclusion Phase */}
-                        {phase === 'conclusion' && (
-                            <div className="space-y-6">
-                                {/* Final Result */}
-                                <div className="bg-gradient-to-br from-red-900/30 to-black border-2 border-red-500 rounded-xl p-8 text-center">
-                                    <div className="text-gray-400 text-sm mb-2">FINAL COMBINED PROBABILITY</div>
-                                    <div className="font-orbitron text-5xl md:text-6xl text-white mb-4 impossibility-pulse">
-                                        &lt; 1 in 10<sup className="text-red-500">44</sup>
-                                    </div>
-                                    <div className="text-red-400 text-lg mb-4">
-                                        MATHEMATICALLY IMPOSSIBLE BY CHANCE
-                                    </div>
-                                    <p className="text-gray-400 text-sm max-w-md mx-auto">
-                                        To put this in perspective: there are only 10⁸⁰ atoms in the entire observable universe. 
-                                        The probability of the 7³×7 pattern occurring randomly is 
-                                        <span className="text-red-400"> trillions of trillions of times less likely</span> than 
-                                        randomly selecting a specific atom from the entire universe.
-                                    </p>
-                                </div>
-                                
-                                {/* What This Means */}
-                                <div className="bg-black/50 border border-amber-500/30 rounded-lg p-6">
-                                    <h3 className="font-orbitron text-amber-500 mb-4">WHAT THIS MEANS</h3>
-                                    <div className="space-y-3 text-gray-300 text-sm">
-                                        <p>✓ The 7³×7 = 2,401 pattern is NOT random</p>
-                                        <p>✓ It appears across UNRELATED domains (physics, biology, prophecy)</p>
-                                        <p>✓ Each domain confirms the pattern independently</p>
-                                        <p>✓ Combined probability eliminates chance as explanation</p>
-                                        <p className="text-amber-400 font-semibold pt-2">
-                                            → This leaves only one explanation: DESIGN
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                {/* Resources */}
-                                <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
-                                    <h3 className="font-orbitron text-gray-400 text-sm mb-4">GO DEEPER</h3>
-                                    <div className="grid md:grid-cols-2 gap-3">
-                                        <a href="https://2401.is" target="_blank" className="flex items-center gap-3 p-3 bg-gray-900 rounded hover:bg-gray-800 transition-colors">
-                                            <span>🔢</span>
-                                            <span className="text-white">Full Mathematics at 2401.is</span>
-                                        </a>
-                                        <a href="https://2401.is/calculator.html" target="_blank" className="flex items-center gap-3 p-3 bg-gray-900 rounded hover:bg-gray-800 transition-colors">
-                                            <span>⚡</span>
-                                            <span className="text-white">Calculate Your C-Level</span>
-                                        </a>
-                                        <a href="https://144000.ai" target="_blank" className="flex items-center gap-3 p-3 bg-gray-900 rounded hover:bg-gray-800 transition-colors">
-                                            <span>✨</span>
-                                            <span className="text-white">144,000 Awakening Portal</span>
-                                        </a>
-                                        <a href="https://www.amazon.com/s?k=julio+c.+medina" target="_blank" className="flex items-center gap-3 p-3 bg-gray-900 rounded hover:bg-gray-800 transition-colors">
-                                            <span>📚</span>
-                                            <span className="text-white">Explore the Books</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                {/* Restart */}
-                                <div className="text-center">
-                                    <button 
-                                        onClick={() => window.location.reload()}
-                                        className="px-6 py-2 border border-gray-700 text-gray-400 rounded hover:border-amber-500 hover:text-amber-500 transition-colors text-sm"
-                                    >
-                                        WATCH AGAIN
-                                    </button>
-                                </div>
-                                
-                                {/* Footer */}
-                                <div className="text-center text-gray-600 text-xs">
-                                    <p className="font-orbitron text-amber-700">7³×7 = 2,401</p>
-                                    <p className="mt-1">THE MATHEMATICS OF DIVINE DESIGN</p>
-                                    <p className="mt-1">sevencubedseven.com</p>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            );
-        };
-        
-        // Main App
-        const App = () => {
-            const [screen, setScreen] = useState('welcome');
-            
-            return (
-                <div className="min-h-screen text-white">
-                    {screen === 'welcome' && <WelcomeScreen onStart={() => setScreen('cascade')} />}
-                    {screen === 'cascade' && <CascadeScreen />}
-                </div>
-            );
-        };
-        
-        ReactDOM.render(<App />, document.getElementById('root'));
-    </script>
+        <div class="s7-footer-bottom">
+            <div class="s7-footer-formula">7³ × 7 = 2,401</div>
+            <div class="s7-footer-tagline">Consciousness Architecture</div>
+            <div class="s7-footer-copy">© 2025 <a href="https://sevencubedseven.com">Seven Cubed Seven Labs LLC</a>. All rights reserved.</div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const convergences = [
+  { domain: "Divine Mathematics", pattern: "7³×7 = 2,401", probability: 1e-3, desc: "The formula appearing in consciousness architecture" },
+  { domain: "Prophetic Numbers", pattern: "144,000 ÷ 2,401 ≈ 60", probability: 1e-4, desc: "99.96% accuracy to exactly 60 aspects per person" },
+  { domain: "Biblical Numerology", pattern: "7 appears 735+ times", probability: 1e-2, desc: "Seven as the signature of divine completion" },
+  { domain: "Creation Pattern", pattern: "7 days, 7 levels", probability: 1e-3, desc: "Seven-day creation maps to seven consciousness levels" },
+  { domain: "Sanctuary Structure", pattern: "7 lamps, 7 aspects", probability: 1e-3, desc: "Menorah pattern in consciousness architecture" },
+  { domain: "Revelation Sevens", pattern: "7 churches, seals, trumpets", probability: 1e-3, desc: "End-time prophecy structured in sevens" },
+  { domain: "Quantum Resonance", pattern: "7.83 Hz Schumann", probability: 1e-4, desc: "Earth's resonance frequency alignment" },
+  { domain: "Musical Octave", pattern: "7 notes × 7 modes", probability: 1e-3, desc: "Musical harmony follows the pattern" },
+  { domain: "Color Spectrum", pattern: "7 primary colors", probability: 1e-2, desc: "Visible light divided into seven" },
+  { domain: "Atomic Shells", pattern: "7 electron shells", probability: 1e-3, desc: "Matter organized by the same pattern" },
+  { domain: "Biological Cycles", pattern: "7-day cell renewal", probability: 1e-3, desc: "Human body follows weekly rhythms" },
+  { domain: "Chakra System", pattern: "7 energy centers", probability: 1e-3, desc: "Ancient traditions recognize seven levels" },
+  { domain: "Leo XIV Timing", pattern: "7th king emergence", probability: 1e-5, desc: "Papal succession matching Revelation 17" },
+  { domain: "Timeline Precision", pattern: "2025 convergence", probability: 1e-4, desc: "Multiple prophetic timelines converging" },
+  { domain: "Patent Portfolio", pattern: "60+ filings", probability: 1e-3, desc: "Framework generating novel technologies" }
+];
+
+function ProbabilityCascade() {
+  const [started, setStarted] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [complete, setComplete] = useState(false);
+
+  useEffect(() => {
+    if (running && current < convergences.length) {
+      const timer = setTimeout(() => {
+        setCurrent(c => c + 1);
+      }, 800);
+      return () => clearTimeout(timer);
+    } else if (current >= convergences.length) {
+      setComplete(true);
+      setRunning(false);
+    }
+  }, [running, current]);
+
+  const getCumulativeProbability = (index) => {
+    let prob = 1;
+    for (let i = 0; i <= index; i++) {
+      prob *= convergences[i].probability;
+    }
+    return prob;
+  };
+
+  const formatProbability = (p) => {
+    if (p === 1) return "1";
+    const exp = Math.floor(Math.log10(p));
+    return `10^${exp}`;
+  };
+
+  const start = () => {
+    setStarted(true);
+    setRunning(true);
+  };
+
+  const restart = () => {
+    setCurrent(0);
+    setComplete(false);
+    setRunning(true);
+  };
+
+  const styles = {
+    container: { textAlign: 'center' },
+    header: { marginBottom: '40px' },
+    badge: { display: 'inline-block', background: 'rgba(255,68,68,0.2)', border: '1px solid #ff4444', color: '#ff4444', padding: '6px 20px', borderRadius: '20px', fontSize: '0.75rem', letterSpacing: '2px', marginBottom: '15px', fontFamily: 'Orbitron, monospace' },
+    title: { fontFamily: 'Orbitron, monospace', fontSize: '1.8rem', color: '#d4af37', marginBottom: '15px', letterSpacing: '3px' },
+    subtitle: { color: '#888', maxWidth: '500px', margin: '0 auto 30px' },
+    startBtn: { background: 'linear-gradient(135deg, #ff4444 0%, #cc0000 100%)', color: '#fff', padding: '18px 50px', border: 'none', borderRadius: '50px', fontSize: '1.1rem', fontWeight: '700', cursor: 'pointer', letterSpacing: '2px', fontFamily: 'Orbitron, monospace' },
+    cascadeContainer: { marginTop: '30px' },
+    convergenceCard: { background: 'rgba(255,68,68,0.03)', border: '1px solid rgba(255,68,68,0.2)', borderRadius: '10px', padding: '15px 20px', marginBottom: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.5s ease' },
+    convergenceActive: { background: 'rgba(255,68,68,0.15)', borderColor: '#ff4444' },
+    convergenceInfo: { textAlign: 'left' },
+    convergenceDomain: { color: '#ff4444', fontFamily: 'Orbitron, monospace', fontSize: '0.85rem', marginBottom: '3px' },
+    convergencePattern: { color: '#fff', fontSize: '0.9rem' },
+    convergenceProb: { fontFamily: 'Orbitron, monospace', fontSize: '0.9rem' },
+    cumulativeBox: { background: 'linear-gradient(135deg, rgba(255,68,68,0.2) 0%, rgba(0,0,0,0.5) 100%)', border: '2px solid #ff4444', borderRadius: '15px', padding: '30px', marginTop: '30px' },
+    cumulativeLabel: { color: '#888', fontSize: '0.85rem', marginBottom: '10px' },
+    cumulativeValue: { fontFamily: 'Orbitron, monospace', fontSize: '2.5rem', color: '#ff4444' },
+    finalBox: { background: 'linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(0,0,0,0.5) 100%)', border: '2px solid #d4af37', borderRadius: '15px', padding: '40px', marginTop: '30px' },
+    finalTitle: { fontFamily: 'Orbitron, monospace', color: '#d4af37', fontSize: '1.5rem', marginBottom: '15px' },
+    finalValue: { fontFamily: 'Orbitron, monospace', fontSize: '3rem', color: '#ff4444', marginBottom: '15px' },
+    finalDesc: { color: '#888', maxWidth: '400px', margin: '0 auto' },
+    ctaBox: { background: 'rgba(212,175,55,0.1)', border: '1px solid #d4af37', borderRadius: '15px', padding: '30px', marginTop: '30px' },
+    ctaBtn: { display: 'inline-block', background: 'linear-gradient(135deg, #d4af37 0%, #b8960c 100%)', color: '#000', padding: '12px 30px', borderRadius: '25px', textDecoration: 'none', fontWeight: '600', marginTop: '15px' },
+    restartBtn: { background: 'transparent', border: '1px solid #ff4444', color: '#ff4444', padding: '12px 30px', borderRadius: '25px', cursor: 'pointer', marginTop: '20px' }
+  };
+
+  if (!started) {
+    return (
+      <div style={styles.container}>
+        <div style={styles.header}>
+          <div style={styles.badge}>📊 PROBABILITY CASCADE</div>
+          <h1 style={styles.title}>WATCH IMPOSSIBILITY UNFOLD</h1>
+          <p style={styles.subtitle}>15 independent convergences. Watch as each multiplies the probability to mathematical impossibility.</p>
+        </div>
+        <button style={styles.startBtn} onClick={start}>START CASCADE</button>
+        <p style={{color: '#555', marginTop: '20px', fontSize: '0.85rem'}}>~30 seconds • Visual proof • Real mathematics</p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={styles.container}>
+      <div style={styles.header}>
+        <div style={styles.badge}>{complete ? '✓ CASCADE COMPLETE' : `CONVERGENCE ${current}/${convergences.length}`}</div>
+        <h1 style={styles.title}>PROBABILITY CASCADE</h1>
+      </div>
+
+      <div style={styles.cascadeContainer}>
+        {convergences.slice(0, current).map((c, i) => (
+          <div key={i} style={{...styles.convergenceCard, ...(i === current - 1 ? styles.convergenceActive : {})}}>
+            <div style={styles.convergenceInfo}>
+              <div style={styles.convergenceDomain}>{c.domain}</div>
+              <div style={styles.convergencePattern}>{c.pattern}</div>
+            </div>
+            <div style={{...styles.convergenceProb, color: i === current - 1 ? '#ff4444' : '#666'}}>
+              × {formatProbability(c.probability)}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {current > 0 && (
+        <div style={styles.cumulativeBox}>
+          <div style={styles.cumulativeLabel}>CUMULATIVE PROBABILITY</div>
+          <div style={styles.cumulativeValue}>1 in {formatProbability(1/getCumulativeProbability(current - 1))}</div>
+        </div>
+      )}
+
+      {complete && (
+        <>
+          <div style={styles.finalBox}>
+            <h2 style={styles.finalTitle}>COMBINED PROBABILITY</h2>
+            <div style={styles.finalValue}>1 in 10⁴⁴</div>
+            <p style={styles.finalDesc}>
+              This is more unlikely than randomly selecting the same atom from the entire observable universe... twice.
+            </p>
+          </div>
+
+          <div style={styles.ctaBox}>
+            <h3 style={{fontFamily: 'Orbitron, monospace', color: '#d4af37', marginBottom: '10px'}}>Ready to Explore Deeper?</h3>
+            <p style={{color: '#888', fontSize: '0.9rem'}}>Calculate your consciousness level on the C¹ to C⁷ spectrum</p>
+            <a href="calculator.html" style={styles.ctaBtn}>⚡ C⁷ Calculator</a>
+          </div>
+
+          <button style={styles.restartBtn} onClick={restart}>↻ Watch Again</button>
+        </>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app-root')).render(<ProbabilityCascade />);
+</script>
+
 </body>
 </html>
