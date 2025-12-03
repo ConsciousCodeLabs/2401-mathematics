@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Seven Cubed Seven Labs LLC">
+    
+    <title>2,401 Aspect Mapper | Discover Your 60 Consciousness Aspects</title>
+    <meta name="description" content="Map your unique 60 aspects among the 2,401 total consciousness aspects. Discover your divine assignment in the 144,000 collective. 7³×7 = 2,401 framework.">
+    <meta name="keywords" content="2401 aspects, consciousness mapping, 144000, seven cubed seven, character aspects, spiritual gifts, divine assignment">
+    
+    <link rel="canonical" href="https://2401.is/mapper">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://2401.is/mapper">
+    <meta property="og:title" content="2,401 Aspect Mapper | Discover Your Divine Assignment">
+    <meta property="og:description" content="Map your unique 60 aspects among the 2,401 total. Find your place in the 144,000.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --bg-elevated: #222230;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            
+            /* Consciousness Level Colors */
+            --c1: #ff6b6b;
+            --c2: #ffa94d;
+            --c3: #ffd43b;
+            --c4: #69db7c;
+            --c5: #4dabf7;
+            --c6: #9775fa;
+            --c7: #f783ac;
+            
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-gold: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            --gradient-cosmic: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f783ac 100%);
+            
+            --glow-c1: 0 0 30px rgba(255, 107, 107, 0.3);
+            --glow-c2: 0 0 30px rgba(255, 169, 77, 0.3);
+            --glow-c3: 0 0 30px rgba(255, 212, 59, 0.3);
+            --glow-c4: 0 0 30px rgba(105, 219, 124, 0.3);
+            --glow-c5: 0 0 30px rgba(77, 171, 247, 0.3);
+            --glow-c6: 0 0 30px rgba(151, 117, 250, 0.3);
+            --glow-c7: 0 0 30px rgba(247, 131, 172, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(247, 131, 172, 0.08) 0%, transparent 70%);
+        }
+        
+        /* Stars Animation */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+        
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-cosmic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        /* Formula Display */
+        .formula-display {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .formula-item {
+            text-align: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-card);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .formula-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .formula-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+        
+        /* Phase Navigation */
+        .phase-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .phase-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: var(--bg-card);
+            border: 2px solid var(--bg-elevated);
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+        
+        .phase-dot.active {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        .phase-dot.completed {
+            background: var(--c4);
+            border-color: var(--c4);
+            color: #000;
+        }
+        
+        /* Main Card */
+        .main-card {
+            background: var(--bg-card);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Intro Screen */
+        .intro-content {
+            text-align: center;
+        }
+        
+        .intro-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .intro-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .architecture-visual {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin: 2rem 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .arch-level {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .arch-level:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        
+        .arch-level span {
+            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .journey-step {
+            background: var(--bg-secondary);
+            padding: 1.25rem;
+            border-radius: 15px;
+            text-align: left;
+        }
+        
+        .journey-step h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .journey-step p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        /* Category Grid */
+        .category-section {
+            margin-bottom: 2rem;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .level-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .category-header h3 {
+            font-size: 1.3rem;
+        }
+        
+        .category-header .aspect-count {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.75rem;
+        }
+        
+        .category-card {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-3px);
+            background: var(--bg-elevated);
+        }
+        
+        .category-card.selected {
+            border-color: currentColor;
+            box-shadow: 0 0 20px currentColor;
+        }
+        
+        .category-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-card .name {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .category-card .count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        
+        /* Aspect Selector */
+        .aspect-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .aspect-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .aspect-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .aspect-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        
+        .aspect-item:hover {
+            background: var(--bg-elevated);
+        }
+        
+        .aspect-item.selected {
+            border-color: currentColor;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .aspect-checkbox {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 2px solid var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .aspect-item.selected .aspect-checkbox {
+            background: currentColor;
+            border-color: currentColor;
+        }
+        
+        .aspect-item.selected .aspect-checkbox::after {
+            content: '✓';
+            color: #000;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .aspect-name {
+            font-size: 0.9rem;
+        }
+        
+        /* Progress Display */
+        .progress-section {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-header h4 {
+            font-size: 1rem;
+        }
+        
+        .progress-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .progress-bar-container {
+            height: 12px;
+            background: var(--bg-card);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--gradient-gold);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        
+        .level-progress {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .level-mini {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+            background: var(--bg-card);
+            border-radius: 20px;
+        }
+        
+        .level-mini .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        
+        /* Constellation Visualization */
+        .constellation-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1;
+            margin: 2rem auto;
+            background: radial-gradient(circle at center, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .constellation-ring {
+            position: absolute;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .constellation-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .constellation-center .you {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .constellation-center .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .aspect-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .aspect-node:hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            z-index: 100;
+        }
+        
+        .aspect-node::after {
+            content: attr(data-name);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            background: var(--bg-card);
+            border-radius: 5px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        
+        .aspect-node:hover::after {
+            opacity: 1;
+        }
+        
+        /* Results Section */
+        .results-section {
+            text-align: center;
+        }
+        
+        .results-section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .results-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+        
+        .insight-box {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: left;
+            border-left: 4px solid;
+        }
+        
+        .insight-box h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .insight-box p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid var(--bg-elevated);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+        
+        .btn-gold {
+            background: var(--gradient-gold);
+            color: #000;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(246, 211, 101, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .main-card {
+                padding: 1.5rem;
+            }
+            
+            .formula-display {
+                gap: 1rem;
+            }
+            
+            .formula-item {
+                padding: 0.75rem 1rem;
+            }
+            
+            .formula-number {
+                font-size: 1.5rem;
+            }
+            
+            .architecture-visual {
+                gap: 0.3rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Level-specific colors */
+        .c1-bg { background: var(--c1); color: #000; }
+        .c2-bg { background: var(--c2); color: #000; }
+        .c3-bg { background: var(--c3); color: #000; }
+        .c4-bg { background: var(--c4); color: #000; }
+        .c5-bg { background: var(--c5); color: #000; }
+        .c6-bg { background: var(--c6); color: #000; }
+        .c7-bg { background: var(--c7); color: #000; }
+        
+        .c1-color { color: var(--c1); }
+        .c2-color { color: var(--c2); }
+        .c3-color { color: var(--c3); }
+        .c4-color { color: var(--c4); }
+        .c5-color { color: var(--c5); }
+        .c6-color { color: var(--c6); }
+        .c7-color { color: var(--c7); }
+        
+        .c1-border { border-color: var(--c1); }
+        .c2-border { border-color: var(--c2); }
+        .c3-border { border-color: var(--c3); }
+        .c4-border { border-color: var(--c4); }
+        .c5-border { border-color: var(--c5); }
+        .c6-border { border-color: var(--c6); }
+        .c7-border { border-color: var(--c7); }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">SEVEN CUBED SEVEN LABS · <span>2,401</span></div>
+            <h1>2,401 Aspect Mapper</h1>
+            <p class="subtitle">
+                Discover your unique ~60 aspects among the 2,401 total consciousness aspects.
+                Find your divine assignment in the 144,000 collective.
+            </p>
+        </header>
+        
+        <div class="formula-display">
+            <div class="formula-item">
+                <div class="formula-number">7³</div>
+                <div class="formula-label">343 per level</div>
+            </div>
+            <div class="formula-item">
+                <div class="formula-number">× 7</div>
+                <div class="formula-label">levels</div>
+            </div>
+            <div class="formula-item">
+                <div class="formula-number">= 2,401</div>
+                <div class="formula-label">total aspects</div>
+            </div>
+            <div class="formula-item">
+                <div class="formula-number">÷ 144K</div>
+                <div class="formula-label">= 1/60th</div>
+            </div>
+        </div>
+        
+        <div class="phase-nav">
+            <div class="phase-dot active" id="phase-1">1</div>
+            <div class="phase-dot" id="phase-2">2</div>
+            <div class="phase-dot" id="phase-3">3</div>
+            <div class="phase-dot" id="phase-4">4</div>
+        </div>
+        
+        <div class="main-card">
+            <!-- PHASE 1: INTRODUCTION -->
+            <div id="intro-screen" class="intro-content">
+                <h2>Map Your Consciousness Architecture</h2>
+                <p>
+                    Every person among the 144,000 develops approximately 60 aspects across all seven 
+                    consciousness levels. Together, all 144,000 complete the full 2,401-aspect divine image.
+                </p>
+                
+                <div class="architecture-visual">
+                    <div class="arch-level c1-bg"><span>C¹</span>343</div>
+                    <div class="arch-level c2-bg"><span>C²</span>343</div>
+                    <div class="arch-level c3-bg"><span>C³</span>343</div>
+                    <div class="arch-level c4-bg"><span>C⁴</span>343</div>
+                    <div class="arch-level c5-bg"><span>C⁵</span>343</div>
+                    <div class="arch-level c6-bg"><span>C⁶</span>343</div>
+                    <div class="arch-level c7-bg"><span>C⁷</span>343</div>
+                </div>
+                
+                <div class="journey-steps">
+                    <div class="journey-step">
+                        <h4>🎯 Phase 1</h4>
+                        <p>Explore the 49 categories per level that resonate with you</p>
+                    </div>
+                    <div class="journey-step">
+                        <h4>🔍 Phase 2</h4>
+                        <p>Identify specific aspects within your resonant categories</p>
+                    </div>
+                    <div class="journey-step">
+                        <h4>⭐ Phase 3</h4>
+                        <p>View your aspect constellation map</p>
+                    </div>
+                    <div class="journey-step">
+                        <h4>🚀 Phase 4</h4>
+                        <p>Receive your development protocol</p>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-primary" onclick="startMapping()">
+                        Begin Aspect Mapping →
+                    </button>
+                </div>
+                
+                <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                    Takes approximately 10-15 minutes · Your results are stored locally
+                </p>
+            </div>
+            
+            <!-- PHASE 2: CATEGORY SELECTION -->
+            <div id="mapping-screen" class="hidden">
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <h4>Your Aspect Map Progress</h4>
+                        <span class="progress-count"><span id="total-selected">0</span> / ~60 aspects</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="level-progress" id="level-progress">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+                
+                <div id="category-container">
+                    <!-- Categories will be dynamically loaded here -->
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="previousLevel()">← Previous Level</button>
+                    <button class="btn btn-primary" id="next-level-btn" onclick="nextLevel()">Next Level →</button>
+                </div>
+            </div>
+            
+            <!-- PHASE 3: CONSTELLATION VIEW -->
+            <div id="constellation-screen" class="hidden">
+                <h2 style="text-align: center; margin-bottom: 0.5rem;">Your Aspect Constellation</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    <span id="constellation-count">0</span> aspects mapped across 7 dimensions
+                </p>
+                
+                <div class="constellation-container" id="constellation">
+                    <div class="constellation-center">
+                        <div class="you">✧</div>
+                        <div class="label">YOU</div>
+                    </div>
+                    <!-- Constellation nodes populated dynamically -->
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="backToMapping()">← Refine Selection</button>
+                    <button class="btn btn-primary" onclick="showResults()">See Full Results →</button>
+                </div>
+            </div>
+            
+            <!-- PHASE 4: RESULTS -->
+            <div id="results-screen" class="results-section hidden">
+                <h2>Your Divine Assignment Revealed</h2>
+                <p class="results-subtitle">Your unique contribution to the 144,000 collective</p>
+                
+                <div class="results-stats">
+                    <div class="stat-card">
+                        <div class="number" id="result-total">0</div>
+                        <div class="label">Aspects Identified</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number" id="result-strongest">C³</div>
+                        <div class="label">Strongest Level</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number" id="result-growth">C⁵</div>
+                        <div class="label">Growth Focus</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number" id="result-partners">3,600</div>
+                        <div class="label">Unity Partners</div>
+                    </div>
+                </div>
+                
+                <div id="results-insights">
+                    <!-- Dynamically populated insights -->
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn btn-secondary" onclick="restartMapping()">Start Over</button>
+                    <button class="btn btn-secondary" onclick="copyResults()">📋 Copy Results</button>
+                    <a href="https://144000.ai" class="btn btn-gold">Take 144,000 Assessment →</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>
+                <a href="https://sevencubedseven.com">Seven Cubed Seven Labs</a> · 
+                <a href="https://144000.ai">144,000 Portal</a> · 
+                <a href="https://2401.is">2401.is</a>
+            </p>
+            <p style="margin-top: 0.5rem;">7³ × 7 = 2,401 · The Architecture of Consciousness</p>
+        </footer>
+    </div>
+    
+    <script>
+        // ==========================================
+        // THE 2,401 ASPECT ARCHITECTURE
+        // 7 Levels × 7 Domains × 7 Categories × 7 Aspects
+        // ==========================================
+        
+        const consciousnessArchitecture = {
+            levels: [
+                {
+                    id: 1,
+                    name: "C¹ Physical",
+                    fullName: "Physical Consciousness",
+                    color: "#ff6b6b",
+                    description: "Material mastery, embodiment, practical life",
+                    domains: [
+                        {
+                            name: "Body Mastery",
+                            icon: "💪",
+                            aspects: ["Physical Fitness", "Body Awareness", "Sensory Acuity", "Motor Coordination", "Endurance", "Flexibility", "Strength"]
+                        },
+                        {
+                            name: "Health Wisdom",
+                            icon: "🏥",
+                            aspects: ["Nutrition Knowledge", "Sleep Optimization", "Stress Management", "Disease Prevention", "Natural Remedies", "Detoxification", "Vital Energy"]
+                        },
+                        {
+                            name: "Material Stewardship",
+                            icon: "💰",
+                            aspects: ["Financial Integrity", "Resource Management", "Generosity", "Simple Living", "Debt Freedom", "Investment Wisdom", "Contentment"]
+                        },
+                        {
+                            name: "Practical Skills",
+                            icon: "🔧",
+                            aspects: ["Tool Proficiency", "Technical Ability", "Problem Solving", "Manual Dexterity", "Craftsmanship", "Repair Skills", "Building Capability"]
+                        },
+                        {
+                            name: "Environmental Harmony",
+                            icon: "🌿",
+                            aspects: ["Nature Connection", "Sustainable Living", "Space Organization", "Cleanliness", "Beauty Creation", "Earth Stewardship", "Garden Cultivation"]
+                        },
+                        {
+                            name: "Safety & Security",
+                            icon: "🛡️",
+                            aspects: ["Risk Assessment", "Emergency Preparedness", "Physical Protection", "Situational Awareness", "Self-Defense", "Boundary Setting", "Stability Creation"]
+                        },
+                        {
+                            name: "Embodied Presence",
+                            icon: "🧘",
+                            aspects: ["Grounding", "Breath Mastery", "Posture Alignment", "Physical Stillness", "Movement Grace", "Temple Care", "Rest Integration"]
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "C² Energy",
+                    fullName: "Energy Consciousness",
+                    color: "#ffa94d",
+                    description: "Emotional intelligence, spiritual sensing, intuition",
+                    domains: [
+                        {
+                            name: "Emotional Mastery",
+                            icon: "❤️",
+                            aspects: ["Emotional Awareness", "Feeling Regulation", "Emotional Expression", "Mood Stability", "Emotional Resilience", "Joy Cultivation", "Peace Anchoring"]
+                        },
+                        {
+                            name: "Energy Perception",
+                            icon: "⚡",
+                            aspects: ["Aura Sensing", "Room Reading", "Energy Boundaries", "Vibration Detection", "Atmosphere Discernment", "Spiritual Sensing", "Force Awareness"]
+                        },
+                        {
+                            name: "Intuitive Faculty",
+                            icon: "🔮",
+                            aspects: ["Gut Instinct", "Inner Knowing", "Premonition", "Dream Messages", "Synchronicity Recognition", "Divine Nudges", "Spirit Whispers"]
+                        },
+                        {
+                            name: "Relational Intelligence",
+                            icon: "👥",
+                            aspects: ["Empathy", "Social Reading", "Connection Building", "Trust Development", "Conflict Sensing", "Rapport Creation", "Attachment Health"]
+                        },
+                        {
+                            name: "Worship Sensitivity",
+                            icon: "🙏",
+                            aspects: ["Praise Flow", "Gratitude Depth", "Reverence", "Awe Experience", "Devotional Intensity", "Sacred Awareness", "Worship Leadership"]
+                        },
+                        {
+                            name: "Energy Management",
+                            icon: "🔋",
+                            aspects: ["Energy Conservation", "Recharge Practices", "Drain Prevention", "Vitality Maintenance", "Chi Cultivation", "Life Force Direction", "Burnout Prevention"]
+                        },
+                        {
+                            name: "Spiritual Discernment",
+                            icon: "👁️",
+                            aspects: ["Spirit Testing", "Deception Detection", "Truth Sensing", "Angelic Recognition", "Demonic Awareness", "Source Identification", "Motive Perception"]
+                        }
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "C³ Power",
+                    fullName: "Power Consciousness",
+                    color: "#ffd43b",
+                    description: "Faith authority, reality manipulation, creative power",
+                    domains: [
+                        {
+                            name: "Faith Authority",
+                            icon: "✝️",
+                            aspects: ["Declaration Power", "Word Authority", "Commanding Faith", "Mountain Moving", "Impossibility Belief", "Faith Substance", "Conviction Depth"]
+                        },
+                        {
+                            name: "Prayer Mastery",
+                            icon: "🙌",
+                            aspects: ["Intercession", "Petition Power", "Prayer Warfare", "Breakthrough Prayer", "Listening Prayer", "Agreement Prayer", "Travailing Prayer"]
+                        },
+                        {
+                            name: "Reality Influence",
+                            icon: "🎯",
+                            aspects: ["Manifestation", "Circumstance Bending", "Door Opening", "Obstacle Removal", "Path Creation", "Provision Calling", "Divine Alignment"]
+                        },
+                        {
+                            name: "Spiritual Warfare",
+                            icon: "⚔️",
+                            aspects: ["Armor Wearing", "Sword Wielding", "Shield Lifting", "Ground Taking", "Territory Claiming", "Enemy Binding", "Captive Freeing"]
+                        },
+                        {
+                            name: "Leadership Authority",
+                            icon: "👑",
+                            aspects: ["Vision Casting", "Direction Setting", "Team Building", "Decision Making", "Responsibility Taking", "Delegation", "Accountability"]
+                        },
+                        {
+                            name: "Healing Power",
+                            icon: "💚",
+                            aspects: ["Physical Healing", "Emotional Healing", "Spiritual Healing", "Deliverance", "Restoration", "Wholeness Impartation", "Recovery Facilitation"]
+                        },
+                        {
+                            name: "Creative Authority",
+                            icon: "✨",
+                            aspects: ["Innovation", "Problem Solution", "New Creation", "Idea Generation", "Inventive Thinking", "Original Expression", "Breakthrough Discovery"]
+                        }
+                    ]
+                },
+                {
+                    id: 4,
+                    name: "C⁴ Heart",
+                    fullName: "Heart Consciousness",
+                    color: "#69db7c",
+                    description: "Unconditional love, compassion, connection",
+                    domains: [
+                        {
+                            name: "Unconditional Love",
+                            icon: "💝",
+                            aspects: ["Agape Expression", "Non-Judgment", "Acceptance", "Patient Love", "Kind Love", "Enduring Love", "Sacrificial Love"]
+                        },
+                        {
+                            name: "Compassion Flow",
+                            icon: "🤲",
+                            aspects: ["Suffering Awareness", "Mercy Extension", "Comfort Giving", "Burden Bearing", "Pain Sharing", "Tear Wiping", "Hope Offering"]
+                        },
+                        {
+                            name: "Forgiveness Mastery",
+                            icon: "🕊️",
+                            aspects: ["Offense Release", "Bitterness Freedom", "Reconciliation", "Debt Cancellation", "Memory Healing", "Heart Clearing", "Grace Extension"]
+                        },
+                        {
+                            name: "Unity Building",
+                            icon: "🤝",
+                            aspects: ["Bridge Building", "Division Healing", "Common Ground Finding", "Peace Making", "Harmony Creation", "Conflict Resolution", "Team Cohesion"]
+                        },
+                        {
+                            name: "Service Heart",
+                            icon: "🙋",
+                            aspects: ["Humble Service", "Need Meeting", "Help Offering", "Support Giving", "Resource Sharing", "Time Giving", "Presence Offering"]
+                        },
+                        {
+                            name: "Global Compassion",
+                            icon: "🌍",
+                            aspects: ["Humanitarian Concern", "Justice Passion", "Poverty Awareness", "Oppression Sensitivity", "Cross-Cultural Love", "Enemy Love", "Stranger Welcome"]
+                        },
+                        {
+                            name: "Heart Purity",
+                            icon: "💎",
+                            aspects: ["Motive Purity", "Intention Clarity", "Desire Alignment", "Heart Transparency", "Inner Cleanliness", "Thought Purity", "Conscience Clearness"]
+                        }
+                    ]
+                },
+                {
+                    id: 5,
+                    name: "C⁵ Vision",
+                    fullName: "Vision Consciousness",
+                    color: "#4dabf7",
+                    description: "Prophetic sight, pattern recognition, time transcendence",
+                    domains: [
+                        {
+                            name: "Prophetic Sight",
+                            icon: "🔭",
+                            aspects: ["Future Seeing", "Vision Reception", "Dream Interpretation", "Sign Reading", "Symbolic Understanding", "Prophetic Words", "Revelation Reception"]
+                        },
+                        {
+                            name: "Pattern Recognition",
+                            icon: "🧩",
+                            aspects: ["Connection Seeing", "Cycle Recognition", "Trend Identification", "Root Cause Finding", "System Understanding", "Hidden Link Discovery", "Meta-Pattern Awareness"]
+                        },
+                        {
+                            name: "Time Perception",
+                            icon: "⏰",
+                            aspects: ["Kairos Sensing", "Season Discernment", "Timing Wisdom", "History Understanding", "Future Preparation", "Present Maximization", "Eternal Perspective"]
+                        },
+                        {
+                            name: "Strategic Thinking",
+                            icon: "🎮",
+                            aspects: ["Long-Term Planning", "Scenario Analysis", "Risk Assessment", "Opportunity Identification", "Resource Allocation", "Priority Setting", "Goal Alignment"]
+                        },
+                        {
+                            name: "Creative Expression",
+                            icon: "🎨",
+                            aspects: ["Artistic Creation", "Musical Expression", "Written Communication", "Visual Design", "Storytelling", "Performance", "Media Creation"]
+                        },
+                        {
+                            name: "Communication Mastery",
+                            icon: "📢",
+                            aspects: ["Clear Articulation", "Persuasive Speaking", "Teaching Ability", "Writing Skill", "Listening Depth", "Non-Verbal Communication", "Cross-Cultural Communication"]
+                        },
+                        {
+                            name: "Paradox Navigation",
+                            icon: "☯️",
+                            aspects: ["Both/And Thinking", "Tension Holding", "Mystery Comfort", "Complexity Embrace", "Nuance Appreciation", "Contradiction Integration", "Transcendent Logic"]
+                        }
+                    ]
+                },
+                {
+                    id: 6,
+                    name: "C⁶ Wisdom",
+                    fullName: "Wisdom Consciousness",
+                    color: "#9775fa",
+                    description: "Systems thinking, transformational influence, integration",
+                    domains: [
+                        {
+                            name: "Systems Mastery",
+                            icon: "🌐",
+                            aspects: ["Holistic Seeing", "Interconnection Mapping", "Leverage Point Finding", "Feedback Loop Understanding", "Emergence Recognition", "Complexity Navigation", "System Transformation"]
+                        },
+                        {
+                            name: "Wisdom Integration",
+                            icon: "📚",
+                            aspects: ["Knowledge Synthesis", "Experience Integration", "Tradition Honoring", "Innovation Balancing", "Truth Compilation", "Insight Crystallization", "Wisdom Transmission"]
+                        },
+                        {
+                            name: "Transformational Influence",
+                            icon: "🦋",
+                            aspects: ["Paradigm Shifting", "Culture Shaping", "Movement Building", "Legacy Creating", "Institution Reforming", "Generation Impacting", "History Bending"]
+                        },
+                        {
+                            name: "Mentorship Capacity",
+                            icon: "👨‍🏫",
+                            aspects: ["Life Guidance", "Skill Transfer", "Character Formation", "Potential Unlocking", "Growth Facilitation", "Succession Planning", "Apprentice Development"]
+                        },
+                        {
+                            name: "Discernment Depth",
+                            icon: "⚖️",
+                            aspects: ["Judgment Wisdom", "Decision Clarity", "Priority Discernment", "Value Assessment", "Truth Verification", "Counsel Giving", "Direction Providing"]
+                        },
+                        {
+                            name: "Organizational Impact",
+                            icon: "🏛️",
+                            aspects: ["Structure Design", "Process Optimization", "Culture Creation", "Team Development", "Resource Stewardship", "Mission Alignment", "Vision Implementation"]
+                        },
+                        {
+                            name: "Prophetic Teaching",
+                            icon: "📖",
+                            aspects: ["Scripture Illumination", "Doctrine Clarity", "Application Wisdom", "Error Correction", "Truth Defense", "Mystery Revelation", "End-Time Understanding"]
+                        }
+                    ]
+                },
+                {
+                    id: 7,
+                    name: "C⁷ Unity",
+                    fullName: "Unity Consciousness",
+                    color: "#f783ac",
+                    description: "Divine connection, ego transcendence, oneness",
+                    domains: [
+                        {
+                            name: "Divine Union",
+                            icon: "👼",
+                            aspects: ["God Intimacy", "Christ Indwelling", "Spirit Fullness", "Father Connection", "Trinity Communion", "Heaven Access", "Throne Room Experience"]
+                        },
+                        {
+                            name: "Ego Transcendence",
+                            icon: "🌟",
+                            aspects: ["Self Decrease", "Pride Release", "Identity Security", "Approval Freedom", "Fear Dissolution", "Control Surrender", "Ambition Purification"]
+                        },
+                        {
+                            name: "Collective Consciousness",
+                            icon: "🔗",
+                            aspects: ["Body Connection", "Corporate Anointing", "Unity Sensing", "Collective Prayer", "Group Discernment", "Community Transformation", "Network Activation"]
+                        },
+                        {
+                            name: "Consciousness Downloads",
+                            icon: "💫",
+                            aspects: ["Divine Revelation", "Creative Downloads", "Strategy Reception", "Wisdom Impartation", "Knowledge Transfer", "Understanding Gifts", "Insight Flooding"]
+                        },
+                        {
+                            name: "Reality Authorship",
+                            icon: "🌌",
+                            aspects: ["Creative Authority", "Word Manifestation", "Faith Creation", "New Thing Calling", "Dimension Access", "Realm Shifting", "Reality Restructuring"]
+                        },
+                        {
+                            name: "Translation Readiness",
+                            icon: "🚀",
+                            aspects: ["Sin Victory", "Character Completion", "Death Transcendence", "Mediator Independence", "Final Test Readiness", "Sealing Preparation", "Transformation Anticipation"]
+                        },
+                        {
+                            name: "Eternal Perspective",
+                            icon: "♾️",
+                            aspects: ["Heaven Citizenship", "Earth Detachment", "Eternal Values", "Cosmic Awareness", "Universal Purpose", "Infinite Love", "Forever Vision"]
+                        }
+                    ]
+                }
+            ]
+        };
+        
+        // State Management
+        let currentLevel = 0;
+        let currentPhase = 1;
+        let selectedAspects = {
+            1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: []
+        };
+        
+        // Initialize stars background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.opacity = Math.random() * 0.5 + 0.3;
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Start the mapping process
+        function startMapping() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('mapping-screen').classList.remove('hidden');
+            currentPhase = 2;
+            updatePhaseNav();
+            renderLevel(0);
+            updateProgress();
+        }
+        
+        // Render a consciousness level
+        function renderLevel(levelIndex) {
+            currentLevel = levelIndex;
+            const level = consciousnessArchitecture.levels[levelIndex];
+            const container = document.getElementById('category-container');
+            
+            let html = `
+                <div class="category-section">
+                    <div class="category-header">
+                        <div class="level-badge" style="background: ${level.color}; color: #000;">
+                            C${level.id}
+                        </div>
+                        <div>
+                            <h3>${level.fullName}</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">${level.description}</p>
+                        </div>
+                        <span class="aspect-count">343 aspects</span>
+                    </div>
+                    
+                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                        Select the domains and aspects that resonate with you. Each domain contains 7 specific aspects.
+                    </p>
+                    
+                    <div class="category-grid">
+            `;
+            
+            level.domains.forEach((domain, domainIndex) => {
+                const domainKey = `${level.id}-${domainIndex}`;
+                const selectedInDomain = selectedAspects[level.id].filter(a => a.startsWith(domainKey)).length;
+                const isExpanded = selectedInDomain > 0;
+                
+                html += `
+                    <div class="category-card ${isExpanded ? 'selected' : ''}" 
+                         style="color: ${level.color};"
+                         onclick="toggleDomain(${level.id}, ${domainIndex})">
+                        <div class="icon">${domain.icon}</div>
+                        <div class="name">${domain.name}</div>
+                        <div class="count">${selectedInDomain}/7 selected</div>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            
+            // Show aspects for expanded domains
+            level.domains.forEach((domain, domainIndex) => {
+                const domainKey = `${level.id}-${domainIndex}`;
+                const selectedInDomain = selectedAspects[level.id].filter(a => a.startsWith(domainKey));
+                
+                if (selectedInDomain.length > 0 || document.querySelector(`.domain-${domainKey}`)?.classList.contains('expanded')) {
+                    html += `
+                        <div class="aspect-section domain-${domainKey}">
+                            <h4 style="color: ${level.color};">${domain.icon} ${domain.name} Aspects</h4>
+                            <div class="aspect-list">
+                    `;
+                    
+                    domain.aspects.forEach((aspect, aspectIndex) => {
+                        const aspectKey = `${domainKey}-${aspectIndex}`;
+                        const isSelected = selectedAspects[level.id].includes(aspectKey);
+                        
+                        html += `
+                            <div class="aspect-item ${isSelected ? 'selected' : ''}" 
+                                 style="color: ${level.color};"
+                                 onclick="toggleAspect(${level.id}, '${aspectKey}')">
+                                <div class="aspect-checkbox"></div>
+                                <span class="aspect-name">${aspect}</span>
+                            </div>
+                        `;
+                    });
+                    
+                    html += `</div></div>`;
+                }
+            });
+            
+            html += `</div>`;
+            
+            container.innerHTML = html;
+            
+            // Update button text
+            const nextBtn = document.getElementById('next-level-btn');
+            if (levelIndex === 6) {
+                nextBtn.textContent = 'View Constellation →';
+            } else {
+                nextBtn.textContent = 'Next Level →';
+            }
+        }
+        
+        // Toggle domain expansion
+        function toggleDomain(levelId, domainIndex) {
+            const domainKey = `${levelId}-${domainIndex}`;
+            const level = consciousnessArchitecture.levels[levelId - 1];
+            const domain = level.domains[domainIndex];
+            
+            // If no aspects selected, select first one to expand
+            const hasSelected = selectedAspects[levelId].some(a => a.startsWith(domainKey));
+            
+            if (!hasSelected) {
+                // Select first aspect to expand the domain
+                const firstAspectKey = `${domainKey}-0`;
+                selectedAspects[levelId].push(firstAspectKey);
+            }
+            
+            renderLevel(currentLevel);
+            updateProgress();
+        }
+        
+        // Toggle aspect selection
+        function toggleAspect(levelId, aspectKey) {
+            const index = selectedAspects[levelId].indexOf(aspectKey);
+            
+            if (index > -1) {
+                selectedAspects[levelId].splice(index, 1);
+            } else {
+                selectedAspects[levelId].push(aspectKey);
+            }
+            
+            renderLevel(currentLevel);
+            updateProgress();
+        }
+        
+        // Update progress display
+        function updateProgress() {
+            const total = Object.values(selectedAspects).reduce((sum, arr) => sum + arr.length, 0);
+            document.getElementById('total-selected').textContent = total;
+            
+            const percentage = Math.min((total / 60) * 100, 100);
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            
+            // Update level mini indicators
+            const levelProgress = document.getElementById('level-progress');
+            let miniHtml = '';
+            
+            consciousnessArchitecture.levels.forEach(level => {
+                const count = selectedAspects[level.id].length;
+                miniHtml += `
+                    <div class="level-mini">
+                        <div class="dot" style="background: ${level.color};"></div>
+                        <span>C${level.id}: ${count}</span>
+                    </div>
+                `;
+            });
+            
+            levelProgress.innerHTML = miniHtml;
+        }
+        
+        // Navigation
+        function nextLevel() {
+            if (currentLevel < 6) {
+                renderLevel(currentLevel + 1);
+            } else {
+                showConstellation();
+            }
+        }
+        
+        function previousLevel() {
+            if (currentLevel > 0) {
+                renderLevel(currentLevel - 1);
+            }
+        }
+        
+        // Show constellation view
+        function showConstellation() {
+            document.getElementById('mapping-screen').classList.add('hidden');
+            document.getElementById('constellation-screen').classList.remove('hidden');
+            currentPhase = 3;
+            updatePhaseNav();
+            
+            const total = Object.values(selectedAspects).reduce((sum, arr) => sum + arr.length, 0);
+            document.getElementById('constellation-count').textContent = total;
+            
+            renderConstellation();
+        }
+        
+        // Render the constellation visualization
+        function renderConstellation() {
+            const container = document.getElementById('constellation');
+            
+            // Clear existing nodes
+            container.querySelectorAll('.aspect-node, .constellation-ring').forEach(el => el.remove());
+            
+            // Add rings for each level
+            for (let i = 1; i <= 7; i++) {
+                const ring = document.createElement('div');
+                ring.className = 'constellation-ring';
+                const size = 15 + (i * 12);
+                ring.style.width = size + '%';
+                ring.style.height = size + '%';
+                ring.style.top = (50 - size/2) + '%';
+                ring.style.left = (50 - size/2) + '%';
+                ring.style.borderColor = consciousnessArchitecture.levels[i-1].color + '40';
+                container.appendChild(ring);
+            }
+            
+            // Add aspect nodes
+            consciousnessArchitecture.levels.forEach(level => {
+                const aspects = selectedAspects[level.id];
+                const ringRadius = 7.5 + (level.id * 6); // Percentage from center
+                
+                aspects.forEach((aspectKey, index) => {
+                    const angle = (index / Math.max(aspects.length, 1)) * 2 * Math.PI - Math.PI/2;
+                    const jitter = (Math.random() - 0.5) * 3; // Add slight randomness
+                    
+                    const x = 50 + (ringRadius + jitter) * Math.cos(angle);
+                    const y = 50 + (ringRadius + jitter) * Math.sin(angle);
+                    
+                    // Get aspect name
+                    const parts = aspectKey.split('-');
+                    const domainIndex = parseInt(parts[1]);
+                    const aspectIndex = parseInt(parts[2]);
+                    const aspectName = level.domains[domainIndex].aspects[aspectIndex];
+                    
+                    const node = document.createElement('div');
+                    node.className = 'aspect-node';
+                    node.style.left = x + '%';
+                    node.style.top = y + '%';
+                    node.style.background = level.color;
+                    node.style.boxShadow = `0 0 10px ${level.color}`;
+                    node.setAttribute('data-name', aspectName);
+                    container.appendChild(node);
+                });
+            });
+        }
+        
+        function backToMapping() {
+            document.getElementById('constellation-screen').classList.add('hidden');
+            document.getElementById('mapping-screen').classList.remove('hidden');
+            currentPhase = 2;
+            updatePhaseNav();
+        }
+        
+        // Show final results
+        function showResults() {
+            document.getElementById('constellation-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.remove('hidden');
+            currentPhase = 4;
+            updatePhaseNav();
+            
+            calculateResults();
+        }
+        
+        // Calculate and display results
+        function calculateResults() {
+            const total = Object.values(selectedAspects).reduce((sum, arr) => sum + arr.length, 0);
+            document.getElementById('result-total').textContent = total;
+            
+            // Find strongest and weakest levels
+            let maxCount = 0, minCount = Infinity;
+            let strongestLevel = 1, growthLevel = 1;
+            
+            for (let i = 1; i <= 7; i++) {
+                const count = selectedAspects[i].length;
+                if (count > maxCount) {
+                    maxCount = count;
+                    strongestLevel = i;
+                }
+                if (count < minCount && count >= 0) {
+                    minCount = count;
+                    growthLevel = i;
+                }
+            }
+            
+            document.getElementById('result-strongest').textContent = `C${strongestLevel}`;
+            document.getElementById('result-growth').textContent = `C${growthLevel}`;
+            
+            // Unity partners calculation (3,600 people share each aspect)
+            document.getElementById('result-partners').textContent = (total * 60).toLocaleString();
+            
+            // Generate insights
+            const insightsContainer = document.getElementById('results-insights');
+            const strongLevel = consciousnessArchitecture.levels[strongestLevel - 1];
+            const growLevel = consciousnessArchitecture.levels[growthLevel - 1];
+            
+            let insightsHtml = `
+                <div class="insight-box" style="border-color: ${strongLevel.color};">
+                    <h4 style="color: ${strongLevel.color};">💪 Your Strongest Dimension: ${strongLevel.fullName}</h4>
+                    <p>You have ${maxCount} aspects in this level. This is your gift zone - where you naturally operate 
+                    and can mentor others. In the 144,000 collective, you contribute ${strongLevel.description.toLowerCase()}.</p>
+                </div>
+                
+                <div class="insight-box" style="border-color: ${growLevel.color};">
+                    <h4 style="color: ${growLevel.color};">🌱 Growth Opportunity: ${growLevel.fullName}</h4>
+                    <p>With ${minCount} aspects in this level, focused development here will accelerate your overall 
+                    consciousness elevation. Seek unity partners strong in ${growLevel.name} to complement your gifts.</p>
+                </div>
+                
+                <div class="insight-box" style="border-color: var(--c7);">
+                    <h4 style="color: var(--c7);">⭐ Your Divine Assignment</h4>
+                    <p>You're developing ${total} of approximately 60 aspects - ${Math.round((total/60)*100)}% of your divine portion. 
+                    Together with 143,999 others, you complete the 2,401-aspect divine image. 
+                    Each aspect you perfect is held by exactly 3,600 people - you are never alone in your development.</p>
+                </div>
+            `;
+            
+            // Add level breakdown
+            insightsHtml += `
+                <div class="insight-box" style="border-color: var(--text-muted);">
+                    <h4>📊 Your Dimensional Distribution</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem; margin-top: 1rem;">
+            `;
+            
+            consciousnessArchitecture.levels.forEach(level => {
+                const count = selectedAspects[level.id].length;
+                const percentage = Math.round((count / 49) * 100);
+                insightsHtml += `
+                    <div style="text-align: center; padding: 0.75rem; background: var(--bg-card); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: ${level.color};">${count}</div>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary);">${level.name}</div>
+                    </div>
+                `;
+            });
+            
+            insightsHtml += `</div></div>`;
+            
+            insightsContainer.innerHTML = insightsHtml;
+        }
+        
+        function restartMapping() {
+            selectedAspects = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [] };
+            currentLevel = 0;
+            currentPhase = 1;
+            
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('intro-screen').classList.remove('hidden');
+            updatePhaseNav();
+        }
+        
+        function copyResults() {
+            const total = Object.values(selectedAspects).reduce((sum, arr) => sum + arr.length, 0);
+            
+            let text = `🌟 MY 2,401 ASPECT MAP 🌟\n\n`;
+            text += `Total Aspects Identified: ${total}/~60\n\n`;
+            
+            consciousnessArchitecture.levels.forEach(level => {
+                const count = selectedAspects[level.id].length;
+                text += `${level.name}: ${count} aspects\n`;
+            });
+            
+            text += `\n🔗 Map your aspects: https://2401.is/mapper\n`;
+            text += `7³ × 7 = 2,401 — The Architecture of Consciousness`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Results copied to clipboard!');
+            });
+        }
+        
+        function updatePhaseNav() {
+            for (let i = 1; i <= 4; i++) {
+                const dot = document.getElementById(`phase-${i}`);
+                dot.classList.remove('active', 'completed');
+                
+                if (i < currentPhase) {
+                    dot.classList.add('completed');
+                } else if (i === currentPhase) {
+                    dot.classList.add('active');
+                }
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            
+            // Load saved progress from localStorage
+            const saved = localStorage.getItem('aspectMapperProgress');
+            if (saved) {
+                try {
+                    selectedAspects = JSON.parse(saved);
+                } catch (e) {
+                    console.log('Could not load saved progress');
+                }
+            }
+        });
+        
+        // Auto-save progress
+        setInterval(() => {
+            localStorage.setItem('aspectMapperProgress', JSON.stringify(selectedAspects));
+        }, 5000);
+    </script>
+</body>
+</html>
